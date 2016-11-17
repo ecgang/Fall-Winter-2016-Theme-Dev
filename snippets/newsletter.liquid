@@ -1,10 +1,15 @@
 <div class="newsletter {% if newsletter == 'center' %}center{% endif %}">
   {% if settings.mailchimp_link != blank %}
     <form name="mc-embedded-subscribe-form" class="contact_form" >
-	  <input style="display: none;" checked="checked" type="checkbox" value="32" name="group[4173][32]" id="mce-group[4173]-4173-0"/>
-
+  	  <input style="display: none;" checked="checked" type="checkbox" value="32" name="group[4173][32]" id="mce-group[4173]-4173-0"/>
+      <div id="mdiv">
+        <div class="mdiv">
+          <div class="md">   
+          </div>
+        </div>
+      </div>
       <input  id="emailInput" type="email" value="" name="EMAIL" class="contact_email" placeholder="" />
-	  <p class="msgPopup"></p>
+      <p class="msgPopup"></p>
       <!--<button type="submit" id="newsLetterFormSubmit" class="cta-button sign_up" >Sign Up</button>-->
     </form>
   {% else %}    
