@@ -1514,7 +1514,7 @@ display:none;
 
 
 .newsletter_popup .fancybox-skin {
-  background-color: {{ settings.newsletter_popup_background_color }};
+  background-color: #000;
 }
 .newsletter_popup .fancybox-close {
   color: {{ settings.newsletter_popup_color }} !important;
@@ -1985,9 +1985,9 @@ li.success_message,li.success_message::after{border:0 !important;padding-left:20
 ================================================== */
 
 .newsletter_popup img{margin-bottom:20px;display:block;}
-.newsletter_popup input.contact_email{color:#000;border-bottom:1px solid #000;font-weight:bold;font-size:18px;width:75%; float:left;padding-left:5px;@media all and (max-width: 1023px) {width:68%;}}
+.newsletter_popup input.contact_email{color:#fff;border-bottom:1px solid #fff;font-weight:bold;font-size:18px;width:72%;margin-right:3%; float:left;padding-left:5px;@media all and (max-width: 1023px) {width:68%;}}
 .newsletter_popup #mdiv{top:20px; right:20px !important;}
-.newsletter_popup .sign_up{float:left;background: none;color:#000;border:1px solid #000;margin-top: 0;}
+.newsletter_popup .sign_up{float:left;background: none;color:#fff;border:1px solid #fff;margin-top: 0;}
 .newsletter_popup .sign_up:hover{background: #000;color:#fff;}
 .newsletter_popup button.cta-button{width:25% !important;@media all and (max-width: 1023px) {width:30% !important;}}
 .popup-text{position:absolute; top:20px;left:20px;max-width:50%;text-align:left;@media all and (max-width: 1023px) {max-width:60% !important;left:10px;top:10px;}}
@@ -2522,17 +2522,17 @@ dt a.open,dt a.sub-open{position:absolute;top:0;left:0;width:100%;height:100%;cu
 #splash,#introVid{@media only screen and (max-width: 1023px) {display:none;}}
 .index .section{height:100vh;position: relative;background-size: cover;@media only screen and (max-width: 1023px) {background-position-y:50px;}}
 .hpslide1{background-image:url({{ 'UZ_HP_Slider_2_D_2016_10_11.jpg' | asset_url | split:'?' | first }});}
-.hpslide2{background-image:url({{ 'HP_D_Slider_1_HurricaneUpdate.jpg' | asset_url | split:'?' | first }});}
-.hpslide3{background-image:url({{ 'UZ_HP_Slider_3_D_2016_10_11a.jpg' | asset_url | split:'?' | first }});}
+.hpslide2{background-image:url({{ 'UZ_HP_Slider_3_D_2016_10_11a.jpg' | asset_url | split:'?' | first }});}
+.hpslide3{background-image:url({{ 'HP_Slider_3_SAS_D.jpg' | asset_url | split:'?' | first }});}
 .hpslide4{background-image:url({{ 'UZ_HP_Slider_4_D_2016_10_11.jpg' | asset_url | split:'?' | first }});}
-.hpslide5{background-image:url({{ 'UZ_HP_Slider_5_D_2016_10_11.jpg' | asset_url | split:'?' | first }});}
 
 
 .slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZ_HP_Slider_2_M_2016_10_11.jpg' | asset_url | split:'?' | first }});}}
-.slide2{z-index:2;@media only screen and (max-width: 1023px) {background-image:url({{ 'HP_M_Slider_1_HurricaneUpdate.jpg' | asset_url | split:'?' | first }});}}
-.slide3{z-index:1;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZ_HP_Slider_3_M_2016_10_11.jpg' | asset_url | split:'?' | first }});}}
+.slide2{z-index:1;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZ_HP_Slider_3_M_2016_10_11.jpg' | asset_url | split:'?' | first }});}}
+.slide3{z-index:2;@media only screen and (max-width: 1023px) {background-image:url({{ 'HP_Slider_3_SAS_M.jpg' | asset_url | split:'?' | first }});}}
 .slide4{z-index:1;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZ_HP_Slider_4_M_2016_10_11.jpg' | asset_url | split:'?' | first }});}}
-.slide5{z-index:1;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZ_HP_Slider_5_M_2016_10_11.jpg' | asset_url | split:'?' | first }});}}
+
+
 
 
 /* Philanthropy Page */
@@ -2623,6 +2623,17 @@ a.drawer-brand {
 }
 .drawer-open .drawer-overlay {
   display: block;
+}
+
+.drawer-right-open .overlay{
+  position:fixed;
+  background:#000;
+  z-index: 999;
+  opacity:0.7;
+  top:0;
+  left: 0;
+  width:100%;
+  height: 100%;
 }
 
 /*!------------------------------------*\

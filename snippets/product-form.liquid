@@ -44,7 +44,7 @@
           {% include 'product-swatch' with option %}
         {% endfor %}
 	  	{% unless product.tags contains 'no-size-guide' %}
-	  		{% if settings.size_chart != blank %}
+	  		{% if settings.size_chart != blank %} 
 	  	      <a href="#size-chart" class="lightbox size_chart"><span>{{ 'products.product.size_chart' | t }}</span></a>
 	  	    {% endif %}
 	  	{% endunless %}
