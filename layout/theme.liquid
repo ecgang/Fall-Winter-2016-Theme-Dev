@@ -275,7 +275,8 @@
 	{% endunless %}
 	{% if template contains 'alchemist' %}
 		{% include 'shop-by-look' %}
-		
+	{% elsif template contains 'holiday' %}	
+		{% include 'shop-by-look-holiday' %}
 	{% endif %}
 	</body>
 </html>
