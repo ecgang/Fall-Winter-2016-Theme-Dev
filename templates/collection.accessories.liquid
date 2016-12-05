@@ -1,47 +1,25 @@
-{% capture thelinklist %}{{ collection.handle }}{% endcapture %}
-{% if current_tags  == blank %}
 <div class="container">
-	{% for link in linklists.[thelinklist].links %}
-		{% assign collection = link.object %}
-		{% if forloop.first == true %}
-			<div class="full">
-				<a href="{{ link.url }}" class="alpha thumbnail" title="Browse our {{ link.title | escape }} collection.">
-					{% capture file_name %}{{ collection.handle }}-{{ link.title | handle }}_grande.jpg{% endcapture %}
-					{% capture alt_attr %}{{ link.title | escape }}-{{tag | handle}}{% endcapture %}
-					<img width="100%" src="{{ 'transparent.gif' | asset_url | split:'?' | first  }}" data-src="{{ file_name | asset_url | }}" data-retina-src="{{ file_name | asset_url | }}" width="100%" alt="{{ alt_attr | escape }}" />
-					<span class="text"><h3 class="light">{{ link.title }}</h3><p class="light center">Shop All</p></span>
+{% if linklists.accessories.links.size > 0 %}
+		{% for link in linklists.accessories.links %}
+			{% assign collection = link.object %}
+	
+			<div class="one-third {% cycle 'left-side', 'middle', 'right-side' %} {{collection.title | handleize}}">
+				<a href="{{ link.url }}" class="alpha thumbnail" title="Browse our {{ collection.title | escape }} collection.">
+					{% if collection.image %}
+						<img width="100%" src="{{ 'transparent.gif' | asset_url | split:'?' | first  }}" data-src="{{ collection.image.src | collection_img_url: 'large' }}" width="100%" alt="{{ collection.title | escape }}" />
+					{% elsif collection.object_type == 'page' %}
+						{% if collection.content contains "<featured" %}
+							{% assign src = collection.content | split: 'src="' %}
+							{% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+						    <img width="100%" src="{{ src }}" alt="{{collection.title}}" />
+						{% endif %}
+					{% else %}
+						<img src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" width="100%" alt="{{ collection.title | escape }}" />
+					{% endif %}
+			    	<span class="text"><h3 class="light">{{ link.title }}</h3><p class="light center">Shop All</p></span>
 				</a>
 			</div>
-		{% else %}
-			{% capture col_url%}{{collection.url}}{%endcapture%}
-				<div class="one-third {% cycle 'left-side', 'middle', 'right-side' %} {{link.title | handleize}}">
-					<a href="{{ link.url }}" class="alpha thumbnail" title="Browse our {{ link.title | escape }} collection.">
-						{% capture file_name %}{{ collection.handle }}-{{ link.title | handle }}_grande.jpg{% endcapture %}
-						{% capture alt_attr %}{{ link.title | escape }}-{{tag | handle}}{% endcapture %}
-						<img width="100%" src="{{ 'transparent.gif' | asset_url | split:'?' | first  }}" data-src="{{ file_name | asset_url | }}" data-retina-src="{{ file_name | asset_url | }}" width="100%" alt="{{ alt_attr | escape }}" />
-						<span class="text"><h3 class="light">{{ link.title }}</h3><p class="light center">Shop All</p></span>
-					</a>
-				</div>
+
+		{% endfor %}
 		{% endif %}
-	{% endfor %}
 </div>
-{% else %}
-<div class="sixteen columns">
-	<div class="header-title">
-    	<h1>{{ collection.title }}{{page.title}}</h1>
-  		<h3 class="subtitle text-center">{{current_tags}}</h3>
-	</div>
-    {% if collection.products.size == 0 %}
-      <div class="section no-match clearfix">     
-        <p class="quote">{{ 'collections.general.no_matches' | t }}</p>
-      </div>
-    {% else %}
-      {% assign products = collection.products %}
-      {% assign products_per_row = settings.products_per_row %}
-      {% include 'product-loop' with settings.collection_sidebar %}
-    {% endif %}
-
-    {% include 'pagination' with settings.collection_sidebar %}
-  </div>
-
-{% endif %}
