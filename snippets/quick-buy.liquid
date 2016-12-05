@@ -2,7 +2,12 @@
 {% assign option_index = 0 %}
 <div class="product_form">
 	{% unless product.available  %}
+		{% unless product.tags contains 'coming-soon' %}
 		<input type="submit" name="add" value="sold out" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='Sold Out' disabled />
+		{% else %}
+		<input type="submit" name="add" value="COMING MID-DECEMBER" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='COMING MID-DECEMBER' disabled />
+		{% endunless %}
+		
 	{% else %}
 	<form action="/cart/add" data-id="{{ variant.id }}" method="post" class="clearfix product_form" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" id="product-form-{{ product.id }}">
 		{% if product.variants.size == 1 %}

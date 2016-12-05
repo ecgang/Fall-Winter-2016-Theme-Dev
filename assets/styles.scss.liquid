@@ -267,6 +267,8 @@ Description: Shopify Theme
 	}
 	.cta-button .text{color:#000;}
 	.cta-button:hover .text{color:#fff;}
+  .cta-button .coming-soon{text-transform: uppercase;}
+  .cta-button .subtext{font-size: 10px;margin-top: -5px;display: block;}
 	.black-bg .cta-button{
 		color:#fff;
 		border-color: #fff;
@@ -329,13 +331,13 @@ Description: Shopify Theme
 
   .cta-button.nom{background-color:#D52C37;color:#fff;}
 
-  .purchase .cta-button{
+  .purchase .cta-button,.cta-button.dark{
   	border: 1px solid #000 !important;
   	color:#000 !important;
   	background:#fff !important;
   	opacity:1;
   }
-  .purchase .cta-button:hover{
+  .purchase .cta-button:hover,.cta-button.dark:hover{
   	border: 1px solid #000;
   	color:#fff !important;
   	background:#000 !important;
@@ -2047,7 +2049,7 @@ margin:0;}
 ==================================================*/
 
 [class^='page-lookbook-']  .image-row ,
-[class*='page-lookbook-']  .image-row {
+[class*='page-lookbook-']  .image-row,.Furniture .image-row {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -2063,23 +2065,23 @@ margin:0;}
   }
 }
 [class^='page-lookbook-']  .inline.thumbnail img,
-[class*='page-lookbook-']  .inline.thumbnail img{box-sizing:border-box;@media all and (max-width: 1023px) {max-height:100%;}}
+[class*='page-lookbook-']  .inline.thumbnail img,.Furniture .inline.thumbnail img{box-sizing:border-box;@media all and (max-width: 1023px) {max-height:100%;}}
 [class^='page-lookbook-']  .columns,
-[class*='page-lookbook-']  .columns{-webkit-flex: 0 0 auto;flex: 0 0 auto;display:inline-block;padding:0;margin:0;box-sizing:border-box;padding: 10px;}
+[class*='page-lookbook-']  .columns, .Furniture .columns{overflow:hidden;position:relative;-webkit-flex: 0 0 auto;flex: 0 0 auto;display:inline-block;padding:0;margin:0;box-sizing:border-box;padding: 10px;}
 [class^='page-lookbook-']  .four.columns,
-[class*='page-lookbook-']  .four.columns{width:25%;margin:0;@media all and (max-width: 1023px) {width:50% !important;margin:0;float:left;}}
+[class*='page-lookbook-']  .four.columns, .Furniture .four.columns{width:25%;margin:0;@media all and (max-width: 1023px) {width:50% !important;margin:0;float:left;}}
 [class^='page-lookbook-']  .four.columns img,
-[class*='page-lookbook-']  .four.columns img{@media all and (max-width: 1023px) {padding:0;}}
+[class*='page-lookbook-']  .four.columns img,.Furniture .four.columns img{@media all and (max-width: 1023px) {padding:0;}}
 [class^='page-lookbook-']  .eight.columns,
-[class*='page-lookbook-']  .eight.columns{width:50%;@media all and (max-width: 1023px) {width:100% !important;margin:0;}}
+[class*='page-lookbook-']  .eight.columns, .Furniture .eight.columns{width:50%;@media all and (max-width: 1023px) {width:100% !important;margin:0;}}
 [class^='page-lookbook-']  .eight.columns img,
-[class*='page-lookbook-']  .eight.columns img{@media all and (max-width: 1023px) {padding:0;}}
+[class*='page-lookbook-']  .eight.columns img,.Furniture .eight.columns img{@media all and (max-width: 1023px) {padding:0;}}
 [class^='page-lookbook-']  .align_left,
-[class*='page-lookbook-']  .align_left{padding:5px;box-sizing:border-box;}
+[class*='page-lookbook-']  .align_left,.Furniture .align_left{padding:5px;box-sizing:border-box;}
 [class^='page-lookbook-']  .sixteen.columns,
-[class*='page-lookbook-']  .sixteen.columns{padding:30px;box-sizing:border-box;@media all and (max-width: 1023px) {padding:0 20px;}}
+[class*='page-lookbook-']  .sixteen.columns,.Furniture .sixteen.columns{padding:30px;box-sizing:border-box;@media all and (max-width: 1023px) {padding:0 20px;}}
 [class^='page-lookbook-'] .four.columns.mobile-single,
-[class*='page-lookbook-'] .four.columns.mobile-single{@media all and (max-width: 1023px) {width:100% !important;}}
+[class*='page-lookbook-'] .four.columns.mobile-single,.Furniture .four.columns.moible-single{@media all and (max-width: 1023px) {width:100% !important;}}
 
  .shop-the-look-container .productSortItem.active{display:inline-block;vertical-align:top;}
  .image-row .parentItem{@media only screen and (max-width: 1023px){display:inline-block;}}
@@ -2145,6 +2147,22 @@ img.hidden,.shop-alt img.display_look.collection_hidden,[class^='page-lookbook-'
 }
 
 .text-container{position:relative;text-align:left;background:#000;color:#fff !important;padding:30px !important;height:100%;box-sizing:border-box;@media all and (max-width: 1023px) {padding:10px !important;}}
+
+.text-container.bordered{position: absolute;
+text-align: left;
+background: #000;
+color: #fff !important;
+padding: 30px !important;
+min-height: 100%;
+display: flex;
+float: none;
+box-sizing: border-box;
+top:0;
+left:0;
+width: 100%;
+border: 10px solid;@media all and (max-width: 1023px) {padding:10px !important;}}
+
+
 .text-container.mobile-full{@media all and (max-width: 1023px) {margin-top:5px !important;}}
 .text-container .text-left{position:absolute; top: 50%; transform: translateY(-50%);padding-right:30px;@media all and (max-width: 1023px) {position:relative;transform:none;}}
 .fullWidth{width:100%;}
