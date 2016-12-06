@@ -278,5 +278,8 @@
 	{% elsif template contains 'holiday' %}	
 		{% include 'shop-by-look-holiday' %}
 	{% endif %}
+	{% if template contains 'product' %}
+	<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+	{% endif %}
 	</body>
 </html>

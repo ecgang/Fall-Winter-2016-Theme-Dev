@@ -96,17 +96,8 @@
       {% endif %}
      
       <div class="meta">
-		  {% comment %}
-        {% if settings.display_social_buttons %}
-          <div class="share-button"></div>
-        {% endif %}
-		{% endcomment %}
-
 		<div class="left">
-        <a target="_blank" href="http://pinterest.com/pin/create/button/?url={{ permalinkURL }}&amp;media={{ product.featured_image | product_img_url: '1024x1024' | split:'?' | first }}&amp;description={{ shareTitle }}" class="share-btn left">
-          <span class="icon-pinterest" aria-hidden="true"></span>
-          <span class="share-title">Pin it</span>
-        </a>
+       
 		<p class="p6 style-ref">
 		{% for tag in product.tags  %}
 			{% assign product_tags_string = tag | join ' ' %}
@@ -115,6 +106,7 @@
 			{% endif %}
 		{% endfor %}
 		</p> 
+    <div><a data-pin-do="buttonBookmark" data-pin-save="true" class="left" href="https://www.pinterest.com/pin/create/button/"></a></div>
         {% if settings.display_collections %}
           <p>
             <span class="label">{{ 'products.product.collections' | t }}:</span> 
