@@ -3,7 +3,7 @@
   <ul class="slides">
     {% for image in product.images %}
       <li class="{{ image.alt | escape }}" data-thumb="{{ image.src | product_img_url: '1024x1024' | split:'?' | first }}" data-title="{{ image.alt | escape }}">
-              <img width="723" height="1024" src="{{ image.src | product_img_url: '1024x1024' | split:'?' | first }}" data-src-retina="{{ image.src | product_img_url: '2048x2048' | split:'?' | first }}" alt="{{ image.alt | escape }}" data-index="{{ forloop.index0 }}" data-image-id="{{ image.id }}" data-cloudzoom="zoomImage: '{{ image.src | product_img_url: 'master' | split:'?' | first }}', tintColor: '{{ settings.shop_bg_color }}', zoomPosition: 'inside', zoomOffsetX: 0, touchStartDelay: 250" class="cloudzoom {% if featured_image.id == image.id %}featured_image{% endif %}" /> 
+              <img width="723" height="1024" src="{{ image.src | product_img_url: '1024x1024' | split:'?' | first }}" data-src-retina="{{ image.src | product_img_url: '2048x2048' | split:'?' | first }}" alt="{{ image.alt | escape }}" data-index="{{ forloop.index0 }}" data-image-id="{{ image.id }}" data-cloudzoom="zoomImage: '{{ image.src | product_img_url: 'master' | split:'?' | first }}', tintColor: '{{ settings.shop_bg_color }}', zoomPosition: 'inside', zoomOffsetX: 0, touchStartDelay: 250" class="cloudzoom {% if featured_image.id == image.id %}featured_image{% endif %}" data-pin-description="" /> 
       </li>
     {% endfor %}
   </ul>

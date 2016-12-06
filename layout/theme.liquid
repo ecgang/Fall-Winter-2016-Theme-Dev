@@ -86,6 +86,7 @@
 			  }
 			});
 				*/
+
 		});
 		
 		</script>
@@ -280,6 +281,11 @@
 	{% endif %}
 	{% if template contains 'product' %}
 	<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+	<script type="text/javascript">
+	var str = $( ".description p:first" ).text();
+			console.log(str);
+			$('.cloudzoom').attr("data-pin-description", str);
+			</script>
 	{% endif %}
 	</body>
 </html>

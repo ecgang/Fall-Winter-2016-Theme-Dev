@@ -77,15 +77,24 @@
         <label class="{{ variant.id }}" id="{{ value | handle }}" for="swatch-{{ option_index }}-{{ value | handle }}" style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})">
           <img class="crossed-out" src="{{ 'soldout-square.png' | asset_url }}" />
         </label>
+
         {% else %}
         <label class="{{ variant.id }}" id="{{ value | handle }}" for="swatch-{{ option_index }}-{{ value | handle }}">
           {{ value }}
           <img class="crossed-out" src="{{ 'soldout-square.png' | asset_url }}" />
         </label>
         {% endif %}
+
       </div>
     {% endunless %}
   {% endfor %}
+    {% if is_color %}
+    <div></div>
+    {% if product.tags contains "more colors" %}
+      <p class="additional-available">Also available in: {% if product.tags contains 'Black' %}<span>Black</span>{% endif %}{% if product.tags contains 'Mud' %}<span>Mud</span>{% endif %}{% if product.tags contains 'Petrol' %}<span>Petrol</span>{% endif %}{% if product.tags contains 'Really Red' %}<span>Really Red</span>{% endif %}{% if product.tags contains 'Wine' %}<span>Wine</span>{% endif %}{% if product.tags contains 'White Smoke' %}<span>White Smoke</span>{% endif %}</p>
+      <p>Contact customer care to order: 212.206.3999</p>
+    {% endif %}
+  {% endif %}
 </div>
 
 {% endunless %}

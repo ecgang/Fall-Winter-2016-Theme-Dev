@@ -106,7 +106,13 @@
 			{% endif %}
 		{% endfor %}
 		</p> 
-    <div><a data-pin-do="buttonBookmark" data-pin-save="true" class="left" href="https://www.pinterest.com/pin/create/button/"></a></div>
+    <div>
+    <a data-pin-do="buttonBookmark" data-pin-custom="true" class="share-btn left" data-pin-save="false" href="https://www.pinterest.com/pin/create/button/">
+
+          <span class="icon-pinterest" aria-hidden="true"></span>
+          <span class="share-title">Pin it</span>
+        </a>
+
         {% if settings.display_collections %}
           <p>
             <span class="label">{{ 'products.product.collections' | t }}:</span> 
