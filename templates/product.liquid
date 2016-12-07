@@ -37,19 +37,21 @@
           <meta itemprop="itemCondition" content="New" />
          
           <span class="product-price" itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
-			  {% if variant.available == true %}{{ variant.price | money }}
-			  <span class="soldout"> {% comment %}- {{ 'products.product.sold_out' | t }} </span>{% endcomment %}{% else %}
-	              <span class="current_price">
-	                  {% if variant.price > 0 %} 
-	                    {{ variant.price | money }} 
-	                  {% elsif product.tags contains 'no-pricing' %}
-	  				Price upon request
-	  				{% else %}
-	                    {{ settings.free_price_text }}
-	                  {% endif %}
+			  {{ variant.price | money }}
+			     <span class="soldout"> {% comment %}- {{ 'products.product.sold_out' | t }} </span>{% endcomment %}{% else %}
+	             <span class="current_price">
+                {% if variant.price > 0 %} 
+                  {{ variant.price | money }} 
+                  {% elsif product.tags contains 'no-pricing' %}
+	  				         Price upon request
+                  {% elsif variant.available == false %}
+                    {{ product.price | money }}
+	  				      {% else %}
+	                   {{ settings.free_price_text }}
+	                {% endif %}
 
 	              </span>
-				  {% endif %}
+				  
 			{% comment %}  
 	          <span class="was_price">
 	          {% if variant.price < variant.compare_at_price %}
