@@ -137,11 +137,16 @@
 			{% if settings.quick_shop_enabled %}
 			<span data-fancybox-href="#product-{{ product.id }}" class="quick_shop fa fa-plus" data-gallery="product-{{ product.id }}-gallery"></span>
 			{% endif %}
+			<div class="quick-buy">
+				{% include 'quick-buy' %}
+			</div>	
 		</div>
+
 		<div class="meta">
 			<p class="title">{{product.title}}{% if color contains 'Default' %}{% else %} {{color}}{% endif %}</p>
 			<p class="price">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% else %}{{product.price | money}}{% endif %}</p>
 		</div>
+
 
 	</a>
 </div>

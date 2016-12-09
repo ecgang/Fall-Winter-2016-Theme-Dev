@@ -1,12 +1,12 @@
 {% assign file_extension = 'png' %}
 {% assign option_index = 0 %}
-<div class="product_form">
-	{% unless product.available  %}
-		{% unless product.tags contains 'coming-soon' %}
-		<input type="submit" name="add" value="sold out" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='Sold Out' disabled />
-		{% else %}
+<div class="product_form">		
+		{% if product.tags contains 'call-to-purchase'  %}
+		<input type="submit" name="add" value="LIMITED QUANTITY AVAILABLE" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='LIMITED QUANTITY AVAILABLE' disabled />
+		{% elsif product.tags contains 'coming-soon' %}
 		<input type="submit" name="add" value="COMING MID-DECEMBER" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='COMING MID-DECEMBER' disabled />
-		{% endunless %}
+		{% elsif product.available == false %}
+		<input type="submit" name="add" value="sold out" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='Sold Out' disabled />
 		
 	{% else %}
 	<form action="/cart/add" data-id="{{ variant.id }}" method="post" class="clearfix product_form" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" id="product-form-{{ product.id }}">
@@ -94,6 +94,6 @@
 		{% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
 		<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }}" data-label={{ add_to_cart_label | json }} disabled="disabled" />
 	</form>
-	{% endunless %}
+	{% endif %}
 </div>
 <div class="opacity-bg"></div>
