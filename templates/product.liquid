@@ -31,23 +31,24 @@
 	  {% endif %}
       {% unless collection_handles contains 'coming-soon' or product.tags contains 'call-to-purchase' %}
         <p class="p2 price_info" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-          <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+             <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
           <meta itemprop="seller" content="{{ shop.name | escape }}" />
           <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
           <meta itemprop="itemCondition" content="New" />       
           <span class="product-price" itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
-			     {{ variant.price | money }}</span>
+           {{ variant.price | money }}</span>
 			     <span class="soldout"> {% comment %}- {{ 'products.product.sold_out' | t }} </span>{% endcomment %}
       {% else %}
-           <span class="current_price">
+           <span class="{% if product.tags contains 'call-to-purchase' %}current-price{% else %}current_price{% endif %}">
               {% unless product.tags contains 'no-pricing' %}
                 {{ product.price | money }}
+                {% elsif product.tags contains 'call-to-purchase' %}
+                 Price upon request
               {% elsif variant.price > 0 %} 
                 {{ variant.price | money }}  
-				      {% elsif variant.price == 0 %}
+				      {% else%}
                  {{ settings.free_price_text }}
-              {% else %}
-                 Price upon request
+              
               {% endunless %}
             </span>
 				  
