@@ -144,7 +144,7 @@
 
 		<div class="meta">
 			<p class="title">{{product.title}}{% if color contains 'Default' %}{% else %} {{color}}{% endif %}</p>
-			<p class="price">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% else %}{{product.price | money}}{% endif %}</p>
+			<p class="price">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% elsif product.price_varies and product.tags contains 'no-variant-images' %} {{ product.price_min | money }} - {{ product.price_max | money }}{% else %}{{product.price | money}}{% endif %}</p>
 		</div>
 
 
