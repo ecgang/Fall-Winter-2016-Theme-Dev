@@ -72,7 +72,7 @@
       {% assign values = values | split: ',' %}
 	  
       <div data-value="{{ value | escape }}" class="p5 swatch-element {% if is_color %}color {% else %} size {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
-        <input class="{{ variant.id }}" id="swatch-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
+        <input class="{{ variant.id }}" id="swatch-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} data-price="{{variant.price | money | strip_html}}" />
         {% if is_color %}
         <label class="{{ variant.id }}" id="{{ value | handle }}" for="swatch-{{ option_index }}-{{ value | handle }}" style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})">
           <img class="crossed-out" src="{{ 'soldout-square.png' | asset_url }}" />
@@ -205,7 +205,9 @@
   }, 100); 
 
 </script>
+{% comment %}
 {% include 'linked-options' %}
+{% endcomment %}
 <script>
     $('.swatch-element.soldout').each(function() {
     $(this).find('.crossed-out').addClass('always-show');

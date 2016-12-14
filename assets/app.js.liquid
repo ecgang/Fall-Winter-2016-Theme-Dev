@@ -619,7 +619,7 @@ $successMessage.find('span').text('').removeClass('fadeIn');
       $notify_form.hide();
 	  
     } else {
-      var message = variant ? {{ 'products.product.sold_out' | t | json }} : {{ 'products.product.unavailable' | t | json }};
+      var message = variant ? {{ 'products.product.sold_out' | t | json }} : {{ 'products.product.sold_out' | t | json }};
       $('.was_price', $product).text('');
       $('.current_price', $product).text('');
       $('.items_left', $product).text('');

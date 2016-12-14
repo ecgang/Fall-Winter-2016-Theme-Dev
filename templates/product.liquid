@@ -35,7 +35,7 @@
           <meta itemprop="seller" content="{{ shop.name | escape }}" />
           <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
           <meta itemprop="itemCondition" content="New" />       
-          <span class="product-price" itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+          <span class="product-price" itemprop="price" content="{{ product.selected_or_first_available_variant.price | money }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
            {{ variant.price | money }}</span>
 			     <span class="soldout"> {% comment %}- {{ 'products.product.sold_out' | t }} </span>{% endcomment %}
       {% else %}
@@ -202,8 +202,9 @@
   {% endif %}
   {% endunless %}
   {% endcomment %}
-  
+    
 </div>
+
 {% include 'linked-options' %}
 
 		<script type="text/javascript">
@@ -211,7 +212,6 @@
 			var windowWidth = $(window).width();
 		    if (windowWidth <= 1024) { 
 				$('.swatch_options').on('click','.swatch-element.color', function(){
-					console.log('CLICKED!');
 					$('html,body').animate({scrollTop: $("#slider").offset().top -75 } ,'slow');
 				});	
 		    }
@@ -219,4 +219,4 @@
 		});
 		</script>
 		
-		
+		 
