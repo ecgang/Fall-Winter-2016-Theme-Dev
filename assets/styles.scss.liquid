@@ -121,10 +121,14 @@ Description: Shopify Theme
   	body.drawer-right-open{overflow:hidden;}    
 	.black-bg{background:#000;}
 	main a,main a:visited,main a:-webkit-any-link{color:#000;}
-	a,a:visited,a:-webkit-any-link,.drawer-right a, .drawer-right a:visited,.item_title,.drawer-right .price,.drawer-menu li a,.drawer-menu li a:-webkit-any-link,.drawer footer li a,.drawer footer li a:-webkit-any-link,.drawer footer li a:visited{
+	
+  a,
+  a:link,
+  a:visited{
 	  text-decoration:none;
 	  color:#fff;
   }
+
   a:hover{color:#aaa;}
   
   ::-moz-selection {
@@ -215,6 +219,10 @@ Description: Shopify Theme
 	@media (max-width: 1023px){padding:0;}
   }
   
+  .italic{
+    font-style: italic;
+  }
+
   .caption{
 	  position: absolute;
 	  left: 20px;
@@ -1010,7 +1018,7 @@ div.is-absolute, html.mm-bottom.mm-opened.mm-opening div.is-absolute {
 
   .selector-wrapper, .select { display: none; }
   .swatch_options {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
   }
   .swatch .option_title {
     margin: 0.5em 0;
