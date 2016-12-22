@@ -72,7 +72,7 @@
       {% assign values = values | split: ',' %}
 	  
       <div data-value="{{ value | escape }}" class="p5 swatch-element {% if is_color %}color {% else %} size {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %}">
-        <input class="{{ variant.id }}" id="swatch-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} data-price="{{variant.price | money | strip_html}}" />
+        <input class="{{ variant.id }}" id="swatch-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} data-price="{{variant.price | money | strip_html}}" data-sale-price="{{variant.compare_at_price | money}}" />
         {% if is_color %}
         <label class="{{ variant.id }}" id="{{ value | handle }}" for="swatch-{{ option_index }}-{{ value | handle }}" style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})">
           <img class="crossed-out" src="{{ 'soldout-square.png' | asset_url }}" />
@@ -116,7 +116,7 @@
   $('.swatch-element.size').click(function() {
 
     if($(this).hasClass('soldout')) {
-       return false;
+       
   	}
        
     $('.swatch-element.size').removeClass('swatch-selected');
@@ -204,15 +204,11 @@
     });
   }, 100); 
 
-</script>
-{% comment %}
-{% include 'linked-options' %}
-{% endcomment %}
-<script>
-    $('.swatch-element.soldout').each(function() {
+   $('.swatch-element.soldout').each(function() {
     $(this).find('.crossed-out').addClass('always-show');
     $(this).find('input').removeAttr('disabled');
     $(this).removeClass('soldout');
     
   });
+
 </script>

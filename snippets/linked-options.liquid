@@ -21,16 +21,19 @@ Shopify.updateOptionsInSelector = function(selectorIndex) {
   }
   
   var initialValue = selector.val();
-  
+  console.log(initialValue + ' initialValue' + selector.val());
   selector.empty();    
   var availableOptions = Shopify.optionsMap[key];
+  console.log(availableOptions + ' availableOptions 1');
   for (var i=0; i<availableOptions.length; i++) {
     var option = availableOptions[i];
+
     var newOption = jQuery('<option></option>').val(option).html(option);
     selector.append(newOption);
   }
   jQuery('.swatch[data-option-index="' + selectorIndex + '"] .swatch-element').each(function() {
     if (jQuery.inArray($(this).attr('data-value'), availableOptions) !== -1) {
+      console.log(availableOptions + ' availableOptions');
       $(this).addClass('available').removeClass('soldout').show().find(':radio').removeAttr('disabled','disabled').removeAttr('checked');
       $(this).find('.crossed-out').removeClass('always-show');
     }

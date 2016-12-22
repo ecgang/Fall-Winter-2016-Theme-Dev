@@ -25,7 +25,6 @@
 		{% else %}
         	<p class="p2 vendor">	
           	  <span class="brand" itemprop="brand"><a href="{% if product.tags contains {{product.vendor}} %}/collections/{% endif %}{% if product.tags contains 'Haiti Artisans' %}haiti-artisans/{% endif %}{{product.vendor | handleize }}" name="{{product.vendor}}">{{ product.vendor}}</a></span>
-			  <span></span>
         	</p>
       	{% endif %}
 	  {% endif %}
@@ -35,8 +34,8 @@
           <meta itemprop="seller" content="{{ shop.name | escape }}" />
           <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
           <meta itemprop="itemCondition" content="New" />       
-          <span class="product-price" itemprop="price" content="{{ product.selected_or_first_available_variant.price | money }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
-           {{ variant.price | money }}</span>
+          <span class="product-price" itemprop="price" content="{{ product.selected_or_first_available_variant.price | money }} ">
+           <span class="sale strike">{% if variant.compare_at_price > variant.price %}{{variant.compare_at_price | money}}{% endif %}</span> <span class="current-price">{{ variant.price | money }}</span>  </span>
 			     <span class="soldout"> {% comment %}- {{ 'products.product.sold_out' | t }} </span>{% endcomment %}
       {% else %}
            <span class="{% if product.tags contains 'call-to-purchase' %}current-price{% else %}current_price{% endif %}">
