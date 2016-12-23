@@ -50,11 +50,11 @@
 	  	{% endunless %}
       </div>
     {% endif %}
-    
+    {% comment %}
     {% if product.tags contains 'give back' %}
     <div><h5>SEASON OF GIVING</h5><p><strong>25% of this purchase will support the Urban Zen Foundation.<br /><span class="italic">Now through 12/23/16</span></strong><br><br></p></div>
     {% endif %}
-    
+    {% endcomment %}
     {% if settings.display_product_quantity %}
       <div class="left">
         <label for="quantity">{{ 'products.product.quantity' | t }}</label>
