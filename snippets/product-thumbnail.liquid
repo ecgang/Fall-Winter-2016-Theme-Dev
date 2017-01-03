@@ -31,7 +31,7 @@
 						</div>
 						<div class="meta">
 							<p class="title">{{product.title}}{% if color contains 'Default' %}{% else %}<br><span class="colorName">{{color}}</span>{% endif %}</p>
-							<p class="price">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% elsif product.price_varies and product.tags contains 'no-variant-images' %} {{ product.price_min | money }} - {{ product.price_max | money }}{% else %}{{product.price | money}}{% endif %}</p>
+							<p class="price">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% elsif product.price_varies and product.tags contains 'no-variant-images' %} {{ product.price_min | money }} - {{ product.price_max | money }}{% else %}{{variant.price | money}}{% endif %}</p>
 						</div>
 					</a>
 				</div>				
@@ -85,7 +85,7 @@
 						</div>
 						<div class="meta">
 						<p class="title">{{product.title}}{% if color contains 'Default' %}{% else %}<br><span class="colorName">{% assign words = {{color}} | split: ' ' %}{% for word in words %}{% unless forloop.last %}{{word}}{% endunless %} {% endfor %}</span>{% endif %}</p>
-						<p class="price">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.variant.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% elsif product.price_varies and product.tags contains 'no-variant-images' %} {{ product.price_min | money }} - {{ product.price_max | money }}{% else %}{{product.price | money}}{% endif %}</p>
+						<p class="price">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.variant.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% elsif product.price_varies and product.tags contains 'no-variant-images' %} {{ product.price_min | money }} - {{ product.price_max | money }}{% else %}{{variant.price | money}}{% endif %}</p>
 					</div>
 					</a>
 				</div>
@@ -122,7 +122,7 @@
 					</div>
 					<div class="meta">
 					<p class="title">{{product.title}}{% if color contains 'Default' %}{% else %}<br><span class="colorName">{% assign words = {{color}} | split: ' ' %}{% for word in words %}{% unless forloop.last %}{{word}}{% endunless %} {% endfor %}</span>{% endif %}</p>
-					<p class="price {{ variant.id }}">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.variant.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% elsif product.price_varies and product.tags contains 'no-variant-images' %} {{ product.price_min | money }} - {{ product.price_max | money }}{% else %}{{product.price | money}}{% endif %}</p>
+					<p class="price {{ variant.id }}">{% if product.tags contains 'no-pricing' %}Price upon request{% elsif product.variant contains 'Default' %}{{variant.price | money}}{% elsif product.variant.available == false %}<span class="soldOut">{{ 'products.product.sold_out' | t }}</span>{% elsif product.price_varies and product.tags contains 'no-variant-images' %} {{ product.price_min | money }} - {{ product.price_max | money }}{% else %}{{variant.price | money}}{% endif %}</p>
 				</div>
 				</a>
 			</div>
