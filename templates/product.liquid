@@ -29,6 +29,7 @@
       	{% endif %}
 	  {% endif %}
 
+
       {% unless collection_handles contains 'coming-soon' or product.tags contains 'call-to-purchase' %}
         <p class="p2 price_info" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
              <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
