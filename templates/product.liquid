@@ -28,7 +28,7 @@
         	</p>
       	{% endif %}
 	  {% endif %}
-    
+
       {% unless collection_handles contains 'coming-soon' or product.tags contains 'call-to-purchase' %}
         <p class="p2 price_info" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
              <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
@@ -51,26 +51,14 @@
               
               {% endunless %}
             </span>
-				  
-			{% comment %}  
-	          <span class="was_price">
-	          {% if variant.price < variant.compare_at_price %}
-	            {{ variant.compare_at_price | money }}
-	          {% endif %}
-	          </span>
-          
-			{% endcomment %}
-        
-		  <br>
-  		{% if product.tags contains 'final-sale' %}
-		<span class="smaller">Final Sale</span>
-  		{% endif %}
-        </p>
+		 
 		
         
         {% include 'product-notify-me' %}
       {% endunless %}
-
+  
+          <span class="final-sale smaller">{% if variant.compare_at_price > variant.price %}final sale{% endif %}</span>
+        </p>
       {% if settings.product_description_position == "top" %}
         {% if product.description != blank %}
          <div class="description" itemprop="description">

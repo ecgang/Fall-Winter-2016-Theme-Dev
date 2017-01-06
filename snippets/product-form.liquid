@@ -20,7 +20,7 @@
       <div class="select">
         <select id="product-select-{{ product.id }}{{ product-form }}" name="id" class="multi_select">
           {% for variant in product.variants %}
-            <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }}</option>
+            <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}" >{{ variant.title }}</option>
           {% endfor %}
         </select>
       </div>
@@ -29,7 +29,7 @@
         <label class="h5">{{ product.options[0] }}</label>
         <select id="product-select-{{ product.id }}{{ product-form }}" name="id">
           {% for variant in product.variants %}
-            <option id="option-{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} data-price="{{variant.price | money | strip_html}}" data-sale-price="{{variant.compare_at_price | money}}" value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }}</option>
+            <option id="option-{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} data-price="{{variant.price | money | strip_html}}" data-sale-price="{{variant.compare_at_price | money}}" value="{{ variant.id }}" data-sku="{{ variant.sku }}" {% if variant.compare_at_price > variant.price %}data-sale-lang="DATA-SALE"{% endif %}>{{ variant.title }}</option>
           {% endfor %}
         </select>
       </div>
@@ -110,12 +110,17 @@
   <script>
       $(document).ready(function() {
         {% for variant in product.variants %}
+
           $('input.{{variant.id}}').click(function() {
               var price = $(this).attr('data-price');
+              var saleLang = $(this).attr('data-sale-lang');
+              console.log(saleLang + 'saleLanguage');
               var salePrice = $(this).attr('data-sale-price');
               $('.product-price .current-price').text( price );
              $('.product-price .sale').text( salePrice );
+             $('.price_info .final-sale').text( saleLang );
           }); 
+          
           
         {% endfor %}
 
