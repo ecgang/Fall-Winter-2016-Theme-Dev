@@ -89,9 +89,7 @@
 			</div>
 		{% endif %}
 		{% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
-		{% for variant in product.variants %}
-		<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }}  {% if variant.size < 1 %}TEST CLASS{% endif %}" data-label={{ add_to_cart_label | json }} disabled="disabled" />
-		{% endfor %}
+		<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }} " data-label={{ add_to_cart_label | json }} disabled="disabled" />
 	</form>
 	{% endif %}
 </div>
