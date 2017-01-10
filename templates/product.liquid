@@ -39,8 +39,8 @@
           <span class="product-price" itemprop="price" content="{{ product.selected_or_first_available_variant.price | money }} ">
            <span class="sale strike">{% if variant.compare_at_price > variant.price %}{{variant.compare_at_price | money}}{% endif %}</span> <span class="current-price">{{ variant.price | money }}</span>  </span>
 			     <span class="soldout"> {% comment %}- {{ 'products.product.sold_out' | t }} </span>{% endcomment %}
-      {% else %}
-           <span class="{% if product.tags contains 'call-to-purchase' %}current-price{% else %}current_price{% endif %}">
+             {% else %}
+            <span class="{% if product.tags contains 'call-to-purchase' %}current-price{% else %}current_price{% endif %}">
               {% unless product.tags contains 'no-pricing' %}
                 {{ product.price | money }}
                 {% elsif product.tags contains 'call-to-purchase' %}
@@ -58,7 +58,7 @@
         {% include 'product-notify-me' %}
       {% endunless %}
   
-          <span class="final-sale smaller">{% if variant.compare_at_price > variant.price %}final sale{% endif %}</span>
+          {% comment %}<span class="final-sale smaller">{% if variant.compare_at_price > variant.price %}final sale{% endif %}</span>{% endcomment %}
         </p>
       {% if settings.product_description_position == "top" %}
         {% if product.description != blank %}

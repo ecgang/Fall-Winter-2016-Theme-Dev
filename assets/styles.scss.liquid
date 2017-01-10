@@ -2165,20 +2165,30 @@ img.hidden,.shop-alt img.display_look.collection_hidden,[class^='page-lookbook-'
 
 .text-container{position:relative;text-align:left;background:#000;color:#fff !important;padding:30px !important;height:100%;box-sizing:border-box;@media all and (max-width: 1023px) {padding:10px !important;}}
 
-.text-container.bordered{position: absolute;
-text-align: left;
-background: #000;
-color: #fff !important;
-padding: 30px !important;
-min-height: 100%;
-display: flex;
-float: none;
-box-sizing: border-box;
-top:0;
-left:0;
-width: 100%;
-border: 10px solid;@media all and (max-width: 1023px) {padding:10px !important;}}
-
+.text-container.bordered{
+  position: absolute;
+  text-align: left;
+  background: #000;
+  color: #fff !important;
+  padding: 30px !important;
+  min-height: 100%;
+  display: flex;
+  float: none;
+  box-sizing: border-box;
+  top:0;
+  left:0;
+  width: 100%;
+  border: 10px solid;
+  @media all and (max-width: 1023px) {
+    position:relative;
+    padding:10px !important;
+  }
+}
+.text-container.bordered h1{
+  @media all and (max-width: 1023px) {
+    font-size: 24px;
+  }
+}
 
 .text-container.mobile-full{@media all and (max-width: 1023px) {margin-top:5px !important;}}
 .text-container .text-left{position:absolute; top: 50%; transform: translateY(-50%);padding-right:30px;@media all and (max-width: 1023px) {position:relative;transform:none;}}

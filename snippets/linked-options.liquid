@@ -22,43 +22,23 @@ Shopify.updateOptionsInSelector = function(selectorIndex) {
   
   var initialValue = selector.val();
   console.log(initialValue + ' initialValue' + selector.val());
-  selector.empty();    
+     
   var availableOptions = Shopify.optionsMap[key];
-  console.log(availableOptions + ' availableOptions 1');
-  for (var i=0; i<availableOptions.length; i++) {
-    var option = availableOptions[i];
-
-    var newOption = jQuery('<option></option>').val(option).html(option);
-    selector.append(newOption);
-  }
-  jQuery('.swatch[data-option-index="' + selectorIndex + '"] .swatch-element').each(function() {
-    if (jQuery.inArray($(this).attr('data-value'), availableOptions) !== -1) {
-      console.log(availableOptions + ' availableOptions');
-      $(this).addClass('available').removeClass('soldout').show().find(':radio').removeAttr('disabled','disabled').removeAttr('checked');
-      $(this).find('.crossed-out').removeClass('always-show');
-    }
-    else {
-      $(this).removeClass('available').addClass('soldout').find(':radio').removeAttr('checked').attr('disabled','disabled');
-      $(this).find('.crossed-out').addClass('always-show');
-    }
-  });
-  if (jQuery.inArray(initialValue, availableOptions) !== -1) {
-    selector.val(initialValue); 
-  }
-
+ 
   var categoryString = initialValue.toLowerCase().split(' ').join('-');
   categoryString = categoryString.split('/').join('-');
-  console.log(categoryString+' categoryString');
-  console.log(initialValue+' initialValue');
+
   $('.' + categoryString).addClass('swatch-selected');
+  
   selector.trigger('change'); 
+  
   $('.swatch_name').each(function(){
   	$(this).removeClass('swatch-color-selected');
       var dataValue = $('.color.swatch-selected').attr('data-value');
   	if($(this).attr('data-value') == $('.color.swatch-selected').attr('data-value')){
-		console.log(this+'current swatch_name');
+
   		$('.swatch_name[data-value="'+dataValue+'"]').addClass('swatch-color-selected');
-  		console.log(dataValue+' in loop');
+
   	}
   });
   

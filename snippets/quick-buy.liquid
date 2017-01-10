@@ -20,9 +20,7 @@
 				      	{% assign value = variant.options[option_index] %}
 				        {% assign values = values | join: ',' %}
 				        {% assign values = values | append: ',' | append: value %} 
-				        {% assign values = values | split: ',' %}
-						
-	
+				        {% assign values = values | split: ',' %}			
 						{% if product.options.first == 'Size' and product.options.size == 1 %}
 							{% if variant.available %}
 								<div class="{{product.id}} p5 3a swatch-element {% if variant.available %}available{% else %}soldout{% endif %}">
@@ -50,12 +48,12 @@
 						{% elsif product.options.first == 'Color' and product.options.size == 1 %}
                              {% assign variantColor = variant.option1 | escape %}
 							 {% if variantColor == colorName %}
-                  			     <div test1="{{ variantColor }}" test2="{{ colorName }}" data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
+                  			     <div data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
 						           {% if variant.available %} 
                                   		<input checked="checked" name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" class="{{product.id}}" > 
                                   		<label id="{{ variant.id }}" for="variant-{{ variant.id }}">{{ variant.option2 | escape }}</label> 		
                                   {% else %} 
-                   			     <div test1="{{ variantColor }}" test2="{{ colorName }}" data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
+                   			     <div data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
                                    		<input disabled="disabled"  style="opacity:0.4;" name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}"  class="disabled" > 
                                    		<label id="{{ variant.id }}" for="variant-{{ variant.id }}"  disabled="disabled" opacity="0.8">{{ variant.option2 | escape }}</label> 		
                                    {% endif %}
@@ -83,7 +81,6 @@
 					    <script>
 						    $('input.{{product.id}}').click(function() {
 								$('input[type="submit"].{{product.id}}').removeAttr('disabled');
-						      
 						    });                            
 					    </script>
 					{% endfor %}
@@ -92,7 +89,9 @@
 			</div>
 		{% endif %}
 		{% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
-		<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }}" data-label={{ add_to_cart_label | json }} disabled="disabled" />
+		{% for variant in product.variants %}
+		<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }}  {% if variant.size < 1 %}TEST CLASS{% endif %}" data-label={{ add_to_cart_label | json }} disabled="disabled" />
+		{% endfor %}
 	</form>
 	{% endif %}
 </div>
