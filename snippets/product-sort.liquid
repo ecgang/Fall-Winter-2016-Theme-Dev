@@ -2,10 +2,7 @@
 	var $products = $('.products'),
 	$sortedProducts =$('.sortedProducts');
 	$productItem = $products.children('.productSortItem');
-	$(".products .productSortItem").sort(sort_looks).appendTo('.products');
-	function sort_looks(a, b){
-	    return ($(b).data('collection-position')) < ($(a).data('collection-position')) ? 1 : -1;    
-	}
+	
 	function productSort(a,b){
 		var an = a.getAttribute('color'),
 		bn = b.getAttribute('color');
@@ -31,8 +28,7 @@
 	
 
   
-    $('.productSortItem').each(function() {
-    
+    $('.productSortItem').each(function() {    
    		var colorName = $(this).prop('color').trim();
         var dataVariant = $(this).find('.soldout').attr('data-variant');
         if(typeof dataVariant !== 'undefined') {
@@ -44,12 +40,5 @@
           $(this).find('input').val('Sold Out');
 		  
         }
-      
-        
-      
     });
-
-
-      
-
 </script>

@@ -22,9 +22,24 @@ Shopify.updateOptionsInSelector = function(selectorIndex) {
   
   var initialValue = selector.val();
   console.log(initialValue + ' initialValue' + selector.val());
-     
   var availableOptions = Shopify.optionsMap[key];
- 
+  
+  
+  jQuery('.swatch[data-option-index="' + selectorIndex + '"] .swatch-element').each(function() {
+    if (jQuery.inArray($(this).attr('data-value'), availableOptions) !== -1) {
+      $(this).addClass('available').removeClass('soldout').show().find(':radio').removeAttr('disabled','disabled').removeAttr('checked');
+      $(this).find('.crossed-out').removeClass('always-show');
+    }
+    else {
+      $(this).removeClass('available').addClass('soldout').find(':radio').removeAttr('checked').attr('disabled','disabled');
+      $(this).find('.crossed-out').addClass('always-show');
+    }
+  });
+
+  if (jQuery.inArray(initialValue, availableOptions) !== -1) {
+    selector.val(initialValue); 
+  }
+
   var categoryString = initialValue.toLowerCase().split(' ').join('-');
   categoryString = categoryString.split('/').join('-');
 
