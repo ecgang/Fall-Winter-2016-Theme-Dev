@@ -10,7 +10,7 @@
 						{% elsif collection.object_type == 'page' %}
 							{% if collection.content contains "<featured" %}
 								{% assign src = collection.content | split: 'src="' %}
-								{% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'http://';; | remove: 'https:' %}
+								{% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'https://';; | remove: 'http:' %}
 							    <img width="100%" src="{{ src }}" alt="{{collection.title}}" />
 							{% endif %}
 						{% else %}
