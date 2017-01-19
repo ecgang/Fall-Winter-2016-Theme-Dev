@@ -8,7 +8,28 @@
   <div class="sixteen columns">
     <div class="product-{{ product.id }}">
 {% endif %}
+{% if collection %}
+{% if collection.previous_product or collection.next_product %}
+  <p class="">
+    {% if collection.previous_product %}
+      {% capture prev_url %}{{ collection.previous_product}}#content{% endcapture %}
+      {{ 'products.general.previous_product_html' | t | link_to: prev_url }}
 
+    {% else %}
+     
+    {% endif %}
+    {% if collection.previous_product and collection.next_product  %}
+    |
+    {% endif %}
+    {% if collection.next_product %}
+      {% capture next_url %}{{ collection.next_product}}#content{% endcapture %}
+      {{ 'products.general.next_product_html' | t | link_to: next_url }}
+    {% else %}
+     
+    {% endif %}
+  </p>
+{% endif %}
+{% endif %}
 	<div class="section product_section clearfix" itemscope itemtype="http://schema.org/Product">
 	             
     <div class="{% if settings.product_sidebar %}seven{% else %}nine{% endif %} columns {% if product-images == blank %}{% if settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}{% endif %} {% if settings.product_images_position == 'right' %}mobile_only{% endif %}">
