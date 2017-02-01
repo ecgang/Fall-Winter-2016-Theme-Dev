@@ -30,7 +30,7 @@
   </p>
 {% endif %}
 {% endif %}
-	<div class="section product_section clearfix" itemscope itemtype="http://schema.org/Product">
+	<div class="section product_section clearfix" itemscope itemtype="http://schema.org/Product" id="ajax_section">
 	             
     <div class="{% if settings.product_sidebar %}seven{% else %}nine{% endif %} columns {% if product-images == blank %}{% if settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}{% endif %} {% if settings.product_images_position == 'right' %}mobile_only{% endif %}">
       {% include 'product-images-carousel' %}
@@ -82,8 +82,9 @@
         </span>
         {% include 'product-notify-me' %}
       {% endunless %}
-  
-          {% comment %}<span class="final-sale smaller">{% if variant.compare_at_price > variant.price %}final sale{% endif %}</span>{% endcomment %}
+          {% assign discount_floor =  variant.compare_at_price | divided_by: 2 %}
+       
+          <span class="final-sale smaller">{% if discount_floor > variant.price %}final sale{% endif %}</span>
         </p>
       {% if settings.product_description_position == "top" %}
         {% if product.description != blank %}
