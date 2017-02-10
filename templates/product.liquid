@@ -221,6 +221,7 @@
 </div>
 
 {% include 'linked-options' %}
+{% include 'accordion-js' %}
 
 		<script type="text/javascript">
 		$(window).ready(function() {
@@ -230,6 +231,7 @@
 					$('html,body').animate({scrollTop: $("#slider").offset().top -75 } ,'slow');
 				});	
 		    }
+  var submenu = $('.accordion-sub > dd').first().show();
 
 		});
 		</script>

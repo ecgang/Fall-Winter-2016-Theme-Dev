@@ -1,0 +1,135 @@
+{% assign file_extension = 'png' %}
+{% assign option_index = 0 %}
+{% assign variants = product.variants %}
+
+<div id="product-{{ product.id }}" class="modal product-{{ product.id }} quick_buy_popup" data-lookbook="">
+	<div class="one-half">
+		{% for variant in variants %}
+			{% assign size_opt_variant_split = size_opt_variant | split: 'somestring,' %}
+			{% assign size_opt_count = size_opt_variant_split.size %}
+			{% capture compareSize %},{{variant.option2}},{% endcapture %}
+			{% capture compareColor %},{{variant.option1}},{% endcapture %}
+			{% if colorList contains compareColor %}		
+			{% else %}  
+				{% assign variant_image = variant.image or product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+				{% assign colors = {{variant.option1}}%}
+				{% assign sizes = {{variant.option2}}%}
+				{% for color in colors %}
+					{% assign colorName = color %}
+						<img color="{{colorName}}" class="quick_uniq quick_buy_image" width="100%" height="auto" src="{{ 'transparent.gif' | asset_url | split:'?' | first  }}" data-src="{{ variant.image | product_img_url: 'grande' | split:'?' | first }}" data-retina-src="{{ variant.image | product_img_url: '1024x1024' | split:'?' | first }}" alt="{{variant.name}}" title="{{product.title}}" />
+								
+				{% endfor %}
+				{% capture colorTempList %}{{colorList}}{{variant.option1}},{% endcapture %}
+				{% capture sizeTempList %}{{sizeList}}{{variant.option2}},{% endcapture %}
+				{% assign colorList = colorTempList %}
+				{% assign sizeList = sizeTempList %}
+			{% endif %}
+		{% endfor %}
+	</div><div class="one-half">
+		<a href="{{ variant.url | within: collection }}" itemprop="url"><h2>{{product.title}}</h2></a>
+		<p>{{variant.price | money }}</p>
+		<p>{{product.description}}</p>
+		<div class="product_form">
+			{% if product.tags contains 'call-to-purchase'  %}
+				<input type="submit" name="add" value="LIMITED QUANTITY AVAILABLE" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='LIMITED QUANTITY AVAILABLE' disabled />
+			{% elsif product.tags contains 'coming-soon' %}
+				<input type="submit" name="add" value="COMING MID-DECEMBER" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='COMING MID-DECEMBER' disabled />
+			{% elsif product.available == false %}
+				<input type="submit" name="add" value="sold out" class="action_button add_to_cart add-to-bag cta-button pull-right" data-label='Sold Out' disabled />		
+			{% else %}
+				<form action="/cart/add" data-id="{{ variant.id }}" method="post" class="clearfix product_form" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" id="product-form-{{ product.id }}">
+				{% if product.variants.size == 1 %}
+					<div class="swatch-element available hide"></div>
+					<input type="hidden" name="id" value="{{ product.variants.first.id }}" id="variant-{{ variant.id }}" />
+				{% else %}
+					<div class="swatch_options">
+						<div class="swatch">
+						    {% for variant in variants %}
+						      	{% assign value = variant.options[option_index] %}
+						        {% assign values = values | join: ',' %}
+						        {% assign values = values | append: ',' | append: value %} 
+						        {% assign values = values | split: ',' %}			
+								{% if product.options.first == 'Size' and product.options.size == 1 %}
+									{% if variant.available %}
+										<div class="{{product.id}} p5 3a swatch-element {% if variant.available %}available{% else %}soldout{% endif %}">
+											<input name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" class="{{product.id}}" >
+											<label class="{{product.id}}" for="variant-{{ variant.id }}">{{ variant.option1 | escape }}</label> 
+										</div>
+									{% else %}
+										<div class="p5 swatch-element 3b {% if variant.available %}available{% else %}soldout{% endif %}">
+											<input name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" disabled="disabled" class="disabled"  style="opacity:0.4;" >
+											<label class="{{product.id}}" for="variant-{{ variant.id }}" disabled="disabled" opacity="0.8">{{ variant.option1 | escape }}</label>
+										</div>
+									{% endif %}
+								{% elsif product.options.first == 'Size' and product.options.size > 1 %}
+									{% if variant.available %}
+										<div class="{{product.id}} p5 4a swatch-element {% if variant.available %}available{% else %}soldout{% endif %}">
+											<input name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" class="{{product.id}}" >
+											<label class="{{product.id}}" for="variant-{{ variant.id }}">{{ variant.option1 | escape }}</label> 
+										</div>
+									{% else %}
+										<div class="p5 swatch-element 4b {% if variant.available %}available{% else %}soldout{% endif %}">
+											<input name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" disabled="disabled" class="disabled"  style="opacity:0.4;" >
+											<label class="{{product.id}}" for="variant-{{ variant.id }}" disabled="disabled" opacity="0.8">{{ variant.option1 | escape }}</label>
+										</div>
+									{% else %}
+									{% endif %}                  
+								{% elsif product.options.first == 'Color' and product.options.size == 1 %}
+		                             {% assign variantColor = variant.option1 | escape %}
+									 {% if variantColor == colorName %}
+		                  			     <div data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
+								           {% if variant.available %} 
+		                                  		<input checked="checked" name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" class="{{product.id}}" > 
+		                                  		<label class="{{product.id}}" id="{{ variant.id }}" for="variant-{{ variant.id }}">{{ variant.option2 | escape }}</label> 		
+		                                  {% else %} 
+		                   			     <div data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
+		                                   		<input disabled="disabled"  style="opacity:0.4;" name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}"  class="disabled" > 
+		                                   		<label class="{{product.id}}" id="{{ variant.id }}" for="variant-{{ variant.id }}"  disabled="disabled" opacity="0.8">{{ variant.option2 | escape }}</label> 		
+		                                   {% endif %}
+		                                  <script>
+		                                 	 $('#product-form-{{ product.id }}').addClass('quick-buy-reset');
+		                                  </script>
+										</div>	
+									 {% endif %}
+								{% elsif product.options.first == 'Color' and product.options.size > 1 %}
+		                             {% assign variantColor = variant.option1 | escape %}  
+		                                  {% if variant.available %}
+		                                    <div color="{{variantColor}}" class="{{variant.id}} p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} quick_uniq" title="{{product.title}}">
+		                                        <input name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" class="{{product.id}}" >
+		                                        <label class="{{product.id}}" class="{{ variant.option1 | escape }}" for="variant-{{ variant.id }}">{{ variant.option2 | escape }}</label> 						
+		                                    </div>
+		                                    {% else %}
+		                                    <div class="{{ variant.id }} p5 swatch-element 5b {% if variant.available %}available{% else %}soldout{% endif %} quick_uniq" title="{{product.title}}">
+		                                        <input name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" class="{{product.id}}" >
+		                                        <label class="{{product.id}}" for="variant-{{ variant.id }}">{{ variant.option2 | escape }}</label> 						
+		                                    </div>
+		                                {% endif %}
+								{% endif %}
+							{% endfor %}
+							 <script>
+							    $('label.{{product.id}}').click(function() {
+									$('input[type="submit"].{{product.id}}').removeAttr('disabled');
+									$('label').removeClass('selected');
+									$(this).addClass('selected');
+							    });                            
+							</script>
+						</div>
+					</div>
+				{% endif %}
+				{% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+				<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }} " data-label={{ add_to_cart_label | json }} disabled="disabled" />
+			</form>
+			{% endif %}
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).on('click','.quick_shop',function(event) {
+	if($('.modal').is('[data-lookbook="lookbook-1"]')){
+		$(".quick_uniq[color^='Wine Suede'][title^='Kimono Suede Jacket']").addClass('active');
+		$(".quick_uniq[color^='Dove Grey Viscosecrepe'][title^='Tapered Jodhpur']").addClass('active'); 
+		$(".quick_uniq[color^='Wine Leather'][title^='Tribal Leather Beads Necklace']").addClass('active');
+	}
+});
+</script>
