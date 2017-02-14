@@ -1,7 +1,85 @@
+{{ checkout_scripts }}
+{{ content_for_layout }}
+
 <form action="/cart" method="post" id="cart_form">   
 	<div class="content" data-content>
 		<div class="wrap">
+			<div class="sidebar" role="complimentary">
+				<div class="sidebar__content">
+					<div class="order-summary__section order-summary__section--total-lines">
+						
+						<h4 class="subtotal">
+							Order Summary
+						</h4>
+
+						<p class="subtotal_amount">
+							<strong>Subtotal:</strong> {{ cart.total_price | money_with_currency }}
+							{% comment %}
+							<small id="estimated-shipping" style="display:none">+ <em>{{ 0 | money }} {{ 'cart.shipping_calculator.estimated_shipping' | t }}</em></small>
+							{% endcomment %}
+
+							<small class="excluding_tax"><em>{{ 'cart.general.excluding_tax_shipping' | t }}</em></small>
+						</p>
+
+						{% if settings.show_multiple_currencies %}
+						<p>
+							<small>
+								{{ 'cart.general.orders_processed_in_currency_html' | t: currency: shop.currency }}
+							</small>
+						</p>
+						{% endif %}
+
+						{% if settings.display_special_instructions %} 
+						<label for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
+						<textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>        
+						{% endif %}
+
+						{% if settings.display_tos_checkbox %}
+						<p>
+							<input type="checkbox" class="tos_agree" id="cart_agree" />
+							<label class="tos_label" for="cart_agree">
+								{{ 'cart.general.agree_to_terms_html' | t }}
+							</label>
+						</p>
+						{% endif %}
+						{% if cart.item_count != 0 %}
+						<p>
+							<input type="submit" class="action_button add_to_cart" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
+						</p>
+        				{% endif %}
+						<p class="center">
+							{{ content_for_additional_checkout_buttons | google_button_options: 'transparent' }}
+						</p>
+					
+
+						{% if cart.item_count > 0 %}
+						<div class="continue_shopping">
+							<a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
+						</div>
+						{% endif %}
+						<div>
+							<h4>Customer Care</h4>
+							<p>If you have any questions, or if we can be of further assistance, please contact the Urban Zen online team.<br><br><b>855.755.4848</b><br>Our customer care line is open Monday to Friday, from 10am – 6pm EST.<br><i>We are closed on weekends and national holidays.</i><br><br>All available items will be processed within 2 business days. Ground shipping arrives in approximately 4 to 7 business days. FedEx 2Day® shipping will arrive in 2-5 business days from time of order.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="main" role="main">
+				<ul class="breadcrumb">
+				    <li class="breadcrumb__item breadcrumb__item--current">
+				      <a class="breadcrumb__link" href="/cart">Bag</a>
+				    </li>
+
+				    <li class="breadcrumb__item breadcrumb__item--blank">
+				      Customer information
+				    </li>
+				    <li class="breadcrumb__item breadcrumb__item--blank">
+				      Delivery Method
+				    </li>
+				    <li class="breadcrumb__item breadcrumb__item--blank">
+				      Payment method
+				    </li>
+				</ul>
 				<h1>{{ 'cart.general.title' | t }}</h1>
 				{% if cart.item_count == 0 %}
 					<p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
@@ -10,7 +88,7 @@
 				<div class="feature_divider"></div>
 				<div class="main__content">	
 					{% if cart.item_count != 0 %}
-					<h5 class="title">{{ 'cart.general.products' | t }}</h5>
+					<h5 class="title">Your Selections</h5>
 					{% endif %}
 					{% for item in cart.items %}
 					<div class="{% if cart.item_count == 1 %}one-{% endif %}item">
@@ -62,62 +140,7 @@
 					{% endfor %}							
 				</div>
 			</div>
-			<div class="sidebar" role="complimentary">
-				<div class="sidebar__content">
-					<div class="order-summary__section order-summary__section--total-lines">
-						
-						<h4 class="subtotal">
-							{{ 'cart.general.subtotal' | t }}
-						</h4>
-
-						<p class="subtotal_amount">
-							<strong>{{ cart.total_price | money_with_currency }}</strong> 
-							{% comment %}
-							<small id="estimated-shipping" style="display:none">+ <em>{{ 0 | money }} {{ 'cart.shipping_calculator.estimated_shipping' | t }}</em></small>
-							{% endcomment %}
-
-							<small class="excluding_tax"><em>{{ 'cart.general.excluding_tax_shipping' | t }}</em></small>
-						</p>
-
-						{% if settings.show_multiple_currencies %}
-						<p>
-							<small>
-								{{ 'cart.general.orders_processed_in_currency_html' | t: currency: shop.currency }}
-							</small>
-						</p>
-						{% endif %}
-
-						{% if settings.display_special_instructions %} 
-						<label for="note">{{ 'cart.general.note' | t: shop_name: shop.name }}:</label>
-						<textarea id="note" name="note" rows="2">{{ cart.note }}</textarea>        
-						{% endif %}
-
-						{% if settings.display_tos_checkbox %}
-						<p>
-							<input type="checkbox" class="tos_agree" id="cart_agree" />
-							<label class="tos_label" for="cart_agree">
-								{{ 'cart.general.agree_to_terms_html' | t }}
-							</label>
-						</p>
-						{% endif %}
-						{% if cart.item_count != 0 %}
-						<p>
-							<input type="submit" class="action_button add_to_cart" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
-						</p>
-        				{% endif %}
-						<p class="center">
-							{{ content_for_additional_checkout_buttons | google_button_options: 'transparent' }}
-						</p>
-					
-
-						{% if cart.item_count > 0 %}
-						<div class="continue_shopping">
-							<a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
-						</div>
-						{% endif %}
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 </form>
