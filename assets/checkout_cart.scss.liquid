@@ -1,16 +1,27 @@
 main{
 	margin: 0 0 -256px;
 }
+
+h2{
+	font-family: 'HelveticaNeueLTStd-LtEx', Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: 0.75em;
+    line-height: 1em;
+    letter-spacing: 1px;
+    text-transform: none;
+    color: #323232;
+}
+
 .cart .sidebar{
 	position: relative;
 	background-color: #fafafa;
     box-shadow: 1px 0 0 #e1e1e1 inset;
-    width: 38%;
-    padding-left: 4%;
+    width: 34%;
+    padding:4em 4% 0 4%;
     background-position: left top;
     float: right;
-    height: 100%;
-    padding-top: 100px;
+    
+    min-height: 100%;
 }
 .cart .sidebar:after{
 	content: "";
@@ -37,15 +48,16 @@ main{
     -webkit-flex: 1 0 auto;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
-	padding: 0 5%;
-    width: 90%;
-        -webkit-flex-direction: row-reverse;
+	padding: 0;
+    width: 100%;
+    max-width: 100%;
+    -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
 }
 
 .cart .main{
-	padding-top: 100px;
+	padding-top: 4em;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -58,15 +70,20 @@ main{
     flex: 1 0 auto;
     float: left;
     padding-left: 4%;
+    padding-right: 4%;
 }
 
 .breadcrumb{
 	margin-bottom:25px;
+	margin-top: 0.55em;
 }
 .breadcrumb__item {
     display: inline-block;
-    font-size: 0.85714em;
+    font-size: 12px;
     color: #999999;
+}
+.breadcrumb__item a{
+	font-size: 12px;
 }
 
 .breadcrumb__item:after {
@@ -80,9 +97,27 @@ main{
     background-image: url('//cdn.shopify.com/s/assets/checkout_stable/breadcrumb-chevron-dark-71295905fab7d92dc89e59a955fa7218537cef31e8fa375de8d0227f4138ce51.svg'),none;
 }
 
+.breadcrumb__item:last-child:after{
+	display: none;
+}
+
 #cart_form{height:100vh;display:flex;}
 
 #cart_form .content{padding:0 !important;}
 
 footer,.footerpad{display:none;}
 
+.action_button{
+	background: transparent;
+	font-weight: 300;
+	border:1px solid #000;
+	color: #000;
+}
+
+.clearfix{
+	clear:both;
+}
+
+.drawer--sidebar.drawer--left .drawer-contents{
+	overflow-x:hidden;
+}

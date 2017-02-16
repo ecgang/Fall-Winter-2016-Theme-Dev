@@ -2745,10 +2745,25 @@ $(document).ready(function() {
 		    animationLoop: true,
 			slideshowSpeed: 5000,
 			animationSpeed:1500,
-			touch:false,
+			touch:true,
 			initDelay:10000,
 		    start: function(){
 		         $('img').show(); 
+		         function iOSversion() {
+			  		if (/iP(hone|od|ad)/.test(navigator.platform)) {
+			    	var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+			    	return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+			  	}
+			}
+			ver = iOSversion();
+			if (ver[0] <= 10) {
+				$(".cell-video-container").hide();
+				$('.item').addClass('ipad');
+				$(".text").hide();
+				$(".text.ipad").show();
+			    
+			    $(".flex-control-nav").css("bottom", "55px");
+			}
 		    },
 			controlNav:true
 	    });
@@ -3050,5 +3065,4 @@ window.bioEp = {
 		});
 	}
 }
-	
 	

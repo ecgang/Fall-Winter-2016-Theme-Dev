@@ -31,64 +31,29 @@
 		<link rel="canonical" href="{{ canonical_url }}" />
 		<script type="text/javascript" src="{{ 'app.js' | asset_url }}"></script>
 		{% if template contains 'index' or template contains 'philanthropy' or template contains 'our-story' %}
-		<script type="text/javascript">
-		
-		$(window).ready(function() {
-			var windowWidth = $(window).width();
-			$.scrollify({
-				section : "section",
-				interstitialSection : "footer",
-				easing: "easeOutExpo",
-				standardScrollElements: ".drawer-nav",
-				scrollSpeed: 500,
-				sectionName:false,
-				overflowScroll:false,
-				afterRender:function(){
-					if (windowWidth >= 1023) { 
-						$('.removeDesktop').remove();
-						
-						$.scrollify.update();						
-					}	
-					$.scrollify.update();
-				}
-
-			});
-			/*
-			bioEp.init({
-				width: 394,
-				height: 298,
-              	html: "<div class='popup'><form action='//urbanzen.us2.list-manage.com/subscribe/post?u=fc498178459519fae5d27a86e&amp;id=83eef521b7' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' target='_blank'><label for='Email' class='newsletter__label hidden-label'>email address</label><div class='input-group'><input type='email' value='' placeholder='email address' name='EMAIL' id='Email' class='input-group-field newsletter__input' autocorrect='off' autocapitalize='off'><span class='input-group-btn'><button type='submit' class='cta-button newsletter__submit' name='submit' id='Subscribe'><span class='newsletter__submit-text--large'>submit</span></button></span></div></form></div>",
-				cookieExp: 30,
-              	delay: 5,
-              	showOnDelay: true
-			});
-		});
-			/*$(function() {
-				console.log('Got To Here');
-
-			  var splash = $.cookie('splash');
-			  var cookie_enabled = true;
-
-			  if (cookie_enabled && splash == 'open') {
-				  $('#splash').remove();
-			  } else {
-	  		    if (windowWidth >= 1024) { 
-	  		      $('#splash').html('<div class="text"><i class="icon icon-script-logo"></i></div><iframe id="introVid" src="https://player.vimeo.com/video/179917227?background=1&autoplay=1" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe><a href="#" class="skip">skip</a>');
-	  			  $('#splash .text').fadeIn(3000);
-	  		    }
-	  			$('.skip').click(function() {
-	  				$('#splash').remove();
-	  			});
-			  }
-			  if (cookie_enabled) {
-			    $.cookie('splash', 'open', { expires: 30 });
+		<script type="text/javascript">		
+			$(window).ready(function() {
+				var windowWidth = $(window).width();
+				$.scrollify({
+					section : "section",
+					interstitialSection : "footer",
+					easing: "easeOutExpo",
+					standardScrollElements: ".drawer-nav",
+					scrollSpeed: 500,
+					sectionName:false,
+					overflowScroll:false,
+					afterRender:function(){
+						if (windowWidth >= 1023) { 
+							$('.removeDesktop').remove();
+							
+							$.scrollify.update();						
+						}	
+						$.scrollify.update();
+					}
 				
-			  }
+				});
 			});
-				*/
-
-		});
-		
+			
 		</script>
 
 		{% endif %}
@@ -287,5 +252,6 @@
 			$('.cloudzoom').attr("data-pin-description", str);
 			</script>
 	{% endif %}
+	
 	</body>
 </html>

@@ -12,44 +12,104 @@
 	{{ checkout_stylesheets }}
 	{{ checkout_scripts }}
 </head>
-<body>
-	<div class="banner" data-header>
-		<div class="wrap">
-			{{ content_for_logo }}
+<body class="drawer--sidebar drawer--left">
+<header class="mm-fixed-top" role="banner">
+	<div class="fixed-menu-container desktop_hidden">
+		<button type="button" class="drawer-toggle drawer-hamburger"><span class="sr-only">toggle navigation</span><span class="drawer-hamburger-icon"></span></button><a class="drawer-brand" href="{{ shop.url }}"><i class="icon icon-script-logo"></i></a>
+	</div>
+	<nav class="drawer-nav" role="navigation">
+		<ul class="drawer-menu">
+			<li><a class="drawer-brand" href="{{ shop.url }}"><i class="icon icon-script-logo"></i>{% if template contains 'index' %}<span class="tagline">A Philosophy of Living By Donna Karan</span>{% endif %}</a></li>	
+			{% for link in linklists['main-menu'].links %}
+			   {% assign child_list_handle = link.title | handleize %}
+			   {% if linklists[child_list_handle].links != blank %}
+			      {% assign submenu_active = false %}
+			      {% for childlink in linklists[child_list_handle].links %}
+			         {% if childlink.active %}
+			            {% assign submenu_active = true %}
+			         {% endif %}
+			      {% endfor %}
+			      <li class="{{ link.title | handleize }} submenu{% if link.active or submenu_active %} selected{% endif %}" aria-haspopup="true">
+			         <a class="origlink" href="{{ link.url }}">{{ link.title }}</a><a href="#" class="drop-toggle">{{ link.title }}</a>
+			         <ul class="sub-menu">
+						 {% for childlink in linklists[child_list_handle].links %}
+						 	{% assign grand_child_list_handle = childlink.title | handle %}  
+						 	{% if linklists[grand_child_list_handle] and linklists[grand_child_list_handle].links.size > 0 %}
+						 		{% assign thirdmenu_active = false %}
+								{% for grandchildlink in linklists[grand_child_list_handle].links %}
+						 	   		{% if grandchildlink.active %}
+						 		   		{% assign thirdmenu_active = true %}
+						 			{% endif %}
+						 		{% endfor %}
+								<li class="thirdmenu{% if childlink.active or thirdmenu_active %} selected{% endif %}" aria-haspopup="true">
+									<a class="origlink" href="{{ childlink.url }}">{{ childlink.title }}</a><a href="#" class="drop-toggle">{{ childlink.title }}</a>
+									<ul class="third-menu">
+										{% for grand_childlink in linklists[grand_child_list_handle].links %}
+											<li class="{{grand_childlink.title | handleize}}{% if grand_childlink.active %} selected{% endif %}">
+												<a href="{{ grand_childlink.url }}">{{ grand_childlink.title }}</a>
+											</li>
+										{% endfor %}
+									</ul>
+								</li>
+							{% else %}
+								<li{% if childlink.active %} class="selected"{% endif %}><a href="{{ childlink.url }}">{{ childlink.title | escape }}</a></li>
+							{% endif %}
+						{% endfor %}
+			         </ul>
+			      </li>
+				  {% else %}
+				  		<li class="{{ link.title | handleize }}{% if link.active %} selected{% endif %}">
+				  			<a href="{{ link.url }}">{{ link.title }}</a>
+			      		</li>
+				  {% endif %}
+			{% endfor %}
+		</ul>
+		
+		<div class="social">
+			<a href="{{ settings.instagram_link }}" title="{{ shop.name }} on Instagram" class="icon-instagram" rel="me" target="_blank"></a>
+			<a href="{{ settings.facebook_link }}" title="{{ shop.name }} on Facebook" class="icon-facebook" rel="me" target="_blank"></a>
+			<a href="{{ settings.pinterest_link }}" title="{{ shop.name }} on Pinterest" class="icon-pinterest" rel="me" target="_blank"></a>
+			<a href="{{ settings.twitter_link }}" title="{{ shop.name }} on Twitter" class="icon-twitter" rel="me" target="_blank"></a>
+		</div>
+	</nav>
+</header>
+<main role="main">
+	<div class="drawer-contents">
+		{{ order_summary_toggle }}
+		<div class="content" data-content>
+			<div class="wrap">
+				<div class="sidebar" role="complementary">
+					<div class="sidebar__header">
+						{{ content_for_logo }}
+					</div>
+					<div class="sidebar__content">
+						<h2 class="mobile_hidden">Order Summary</h2>
+						{{ content_for_order_summary }}
+						<div class="mobile_hidden">
+							<h2>Customer Care</h2>
+							<p>If you have any questions, or if we can be of further assistance, please contact the Urban Zen online team.<br><br><b>855.755.4848</b><br>Our customer care line is open Monday to Friday, from 10am – 6pm EST.<br><i>We are closed on weekends and national holidays.</i><br><br>All available items will be processed within 2 business days. Ground shipping arrives in approximately 4 to 7 business days. FedEx 2Day® shipping will arrive in 2-5 business days from time of order.</p>
+						</div>
+					</div>
+
+				</div>
+				<div class="main" role="main">
+
+					<div class="main__content">
+						{{ breadcrumb }}
+						{{ content_for_layout }}
+					</div>
+					<div class="desktop_hidden">
+							<h2>Customer Care</h2>
+							<p>If you have any questions, or if we can be of further assistance, please contact the Urban Zen online team.<br><br><b>855.755.4848</b><br>Our customer care line is open Monday to Friday, from 10am – 6pm EST.<br><i>We are closed on weekends and national holidays.</i><br><br>All available items will be processed within 2 business days. Ground shipping arrives in approximately 4 to 7 business days. FedEx 2Day® shipping will arrive in 2-5 business days from time of order.</p>
+						</div>
+					<div class="main__footer">
+						{{ content_for_footer }}
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	{{ order_summary_toggle }}
-
-	<div class="content" data-content>
-		<div class="wrap">
-			<div class="sidebar" role="complementary">
-				<div class="sidebar__header">
-					{{ content_for_logo }}
-				</div>
-				<div class="sidebar__content">
-					<h2 class="mobile_hidden">Order Summary</h2>
-					{{ content_for_order_summary }}
-				</div>
-
-			</div>
-			<div class="main" role="main">
-
-				<div class="main__content">
-					{{ breadcrumb }}
-					{{ content_for_layout }}
-				</div>
-				<div class="main__content">
-					<h2>Customer Care</h2>
-					<p>If you have any questions, or if we can be of further assistance, please contact the Urban Zen online team.<br><br><b>855.755.4848</b><br>Our customer care line is open Monday to Friday, from 10am – 6pm EST.<br><i>We are closed on weekends and national holidays.</i><br><br>All available items will be processed within 2 business days. Ground shipping arrives in approximately 4 to 7 business days. FedEx 2Day® shipping will arrive in 2-5 business days from time of order.</p>
-				</div>
-				<div class="main__footer">
-					{{ content_for_footer }}
-				</div>
-			</div>
-		</div>
-	</div>
-
+</main>
 	{{ tracking_code }}
 </body>
 </html>

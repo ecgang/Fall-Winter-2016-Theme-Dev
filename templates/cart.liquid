@@ -2,15 +2,14 @@
 {{ content_for_layout }}
 
 <form action="/cart" method="post" id="cart_form">   
-	<div class="content" data-content>
 		<div class="wrap">
 			<div class="sidebar" role="complimentary">
 				<div class="sidebar__content">
 					<div class="order-summary__section order-summary__section--total-lines">
 						
-						<h4 class="subtotal">
+						<h2 class="subtotal">
 							Order Summary
-						</h4>
+						</h2>
 
 						<p class="subtotal_amount">
 							<strong>Subtotal:</strong> {{ cart.total_price | money_with_currency }}
@@ -44,21 +43,18 @@
 						{% endif %}
 						{% if cart.item_count != 0 %}
 						<p>
-							<input type="submit" class="action_button add_to_cart" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
+							{% if cart.item_count > 0 %}
+								<div class="continue_shopping">
+									<a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}">Continue Shopping</a>
+								</div>
+							{% endif %}
+							{{ content_for_additional_checkout_buttons | google_button_options: 'transparent' }}
+							<input type="submit" class="action_button cta-button add_to_cart" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
 						</p>
         				{% endif %}
-						<p class="center">
-							{{ content_for_additional_checkout_buttons | google_button_options: 'transparent' }}
-						</p>
 					
-
-						{% if cart.item_count > 0 %}
-						<div class="continue_shopping">
-							<a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}">{{ 'cart.general.continue_shopping_link_html' | t }}</a>
-						</div>
-						{% endif %}
-						<div>
-							<h4>Customer Care</h4>
+						<div class="clearfix">
+							<h2>Customer Care</h2>
 							<p>If you have any questions, or if we can be of further assistance, please contact the Urban Zen online team.<br><br><b>855.755.4848</b><br>Our customer care line is open Monday to Friday, from 10am – 6pm EST.<br><i>We are closed on weekends and national holidays.</i><br><br>All available items will be processed within 2 business days. Ground shipping arrives in approximately 4 to 7 business days. FedEx 2Day® shipping will arrive in 2-5 business days from time of order.</p>
 						</div>
 					</div>
@@ -80,16 +76,13 @@
 				      Payment method
 				    </li>
 				</ul>
-				<h1>{{ 'cart.general.title' | t }}</h1>
+				<h2>Your {{ 'cart.general.title' | t }}</h2>
 				{% if cart.item_count == 0 %}
 					<p class="quote">{{ 'cart.general.continue_browsing_html' | t }}</p>
 					<div class="spacer"></div>
 					{% endif %}
 				<div class="feature_divider"></div>
 				<div class="main__content">	
-					{% if cart.item_count != 0 %}
-					<h5 class="title">Your Selections</h5>
-					{% endif %}
 					{% for item in cart.items %}
 					<div class="{% if cart.item_count == 1 %}one-{% endif %}item">
 					<div class="two columns alpha">
@@ -140,7 +133,5 @@
 					{% endfor %}							
 				</div>
 			</div>
-			
 		</div>
-	</div>
 </form>
