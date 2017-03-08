@@ -53,7 +53,7 @@
 						<span data-value="{{ value | escape }}" class="swatch_name">
 							{% for word in words %}
 								{% unless forloop.last %}
-									{{word}}
+									{{word | replace: '-', '/'}}
 								{% endunless %}
 							{% endfor %}
 						</span>

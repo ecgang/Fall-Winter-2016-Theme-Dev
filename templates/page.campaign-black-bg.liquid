@@ -1,5 +1,5 @@
 </div>
-<div id="fullpage">
+<div id="">
 	<div class="cell-video-container">
 		<div class="text">
 			<h1 class="light">THE ALCHEMIST CAMPAIGN</h1>
@@ -15,19 +15,6 @@ created to travel the many worlds you live in</p><br/>
 	
 	<div class="full-width first bg-full" style="background-image: url({{ 'Campaign_D_01a.jpg' | asset_url | split:'?' | first }});">
 		<a name="jump-to"> </a>
-		{% assign products = collections.look-1.products %}
-		<div class="campaign-caption right-bottom white">
-			{% for product in products %}
-				<span data-fancybox-href="#product-{{ product.id }}" id="lookbook-1" title="{{product.title}}" class="quick_shop ss-icon">{{product.title}}</span>
-				{% include 'campaign-quick-buy' %}<br>				
-			{% endfor %}
-		</div>
-		<script type="text/javascript">
-			$(".quick_shop").click(function() {
-   			 	var id = this.id;
-   				$(".modal").attr("data-lookbook", id);
-			});
-		</script>
 	</div>
 	<div class="full-width">
 		<div class="half left">
@@ -127,12 +114,7 @@ created to travel the many worlds you live in</p><br/>
 			</li>
 		</ul>
 	</div>
-	<div class="section clearfix center">
-			<br/><br/>
-			<h1 class="light uppercase">EXPLORE THE COLLECTION</h1><br/><br/>
-			<a href="/pages/the-alchemist-collection/" class="cta-button" title="Our Stores">Shop</a>
-		</div>
-</div>
+	{% include 'campaign-quick-buy' %}
 <script type="text/javascript">
 	$(window).ready(function() {
 		$('.cell-video-container .absolute-scroll').delay(7000).fadeIn(2000);

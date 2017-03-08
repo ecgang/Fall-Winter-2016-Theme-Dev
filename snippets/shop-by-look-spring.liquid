@@ -1,0 +1,52 @@
+<script type="text/javascript">
+
+$(window).ready(function() {
+	windowWidth = $(window).width();
+	
+	$(document).on('click','.quick_shop_modal',function(event) {
+		event.preventDefault();
+		var stateId = $(this);
+		$('.modal').removeClass('active');
+		$('.overlay').removeClass('active');
+		$('.overlay').addClass('active');
+		$('.modal').addClass('active');
+		var productName = $(this).attr('title');
+		var link = '/products/'+ productName;
+		link = link.toLowerCase().replace(/ /g,'-');
+		var getUrl = link;
+		var _opened = $(this).parent().hasClass("active");
+		if (_opened === false){   
+			$.ajax({
+				url: getUrl,
+				type:'GET',
+				
+				context: stateId,
+				success: function(data){
+					htmlContent = $(data).find('.swatch');
+					$(".modal").html($(data).find('.seven').html());
+					
+					function loadProduct() {		
+						
+						console.log(event.target);
+						if($(event.target).is('#lookbook-1')){
+							console.log('HERE!');
+							$('.seven').addClass('TEST');
+							$(stateId).addClass('TEST');
+							console.log(htmlContent);
+							$(htmlContent).find("[data-value^='Black Blockprintedsatin']").addClass('.swatch-selected');
+                        	
+                    	}
+                    	console.log('HERE after function');
+                    }
+				}
+			});
+		}
+	});	
+	
+	$(document).on('click','.close', function(event){
+		$('.modal').removeClass('active');
+		$('.overlay').removeClass('active');
+
+	});
+});
+</script>

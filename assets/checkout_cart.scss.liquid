@@ -13,6 +13,7 @@ h2{
 }
 
 .cart .sidebar{
+	box-sizing:border-box;
 	position: relative;
 	background-color: #fafafa;
     box-shadow: 1px 0 0 #e1e1e1 inset;
@@ -20,8 +21,8 @@ h2{
     padding:4em 4% 0 4%;
     background-position: left top;
     float: right;
-    
     min-height: 100%;
+    @media (max-width: 1023px){display:inline-block;width:100%;padding:20px 20px 0 20px;margin-bottom:20px; border:0;box-shadow: none;box-sizing:border-box;display:inline-block;min-height: 0;border-bottom:1px solid #e1e1e1;}
 }
 .cart .sidebar:after{
 	content: "";
@@ -36,6 +37,12 @@ h2{
     box-shadow: 0 -1px 0 #e1e1e1 inset;
     height: 100vh;
     box-shadow: 1px 0 0 #e1e1e1 inset;
+    @media (max-width: 1023px){height: auto !important;}
+}
+.sidebar p{
+	font-size: 12px;
+    line-height: 1.2em;
+    color:#717171;
 }
 
 .cart .wrap{
@@ -54,6 +61,12 @@ h2{
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
     flex-direction: row-reverse;
+    @media (max-width: 1023px){
+    	 -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    @media (max-width: 1023px){display:inline-block;width:100%;padding:0;box-sizing:border-box;}
+    }
 }
 
 .cart .main{
@@ -71,6 +84,7 @@ h2{
     float: left;
     padding-left: 4%;
     padding-right: 4%;
+    @media (max-width: 1023px){width:100%;padding:0 20px;box-sizing:border-box;display:inline-block;}
 }
 
 .breadcrumb{
@@ -121,3 +135,39 @@ footer,.footerpad{display:none;}
 .drawer--sidebar.drawer--left .drawer-contents{
 	overflow-x:hidden;
 }
+
+.line{
+	padding-bottom: 20px;
+	border-top: 1px solid #e1e1e1;
+}
+
+.add_to_cart{
+	background: #000;
+	color: #fff;
+	@media (max-width: 1023px){width:auto !important; margin:0 auto;}
+	cursor: pointer;
+}
+
+.continue_shopping .cta-button{
+	padding-left: 0;border: 0;
+	@media (max-width: 1023px){width:auto !important; margin:0 auto;}
+}
+
+.shopping_actions{
+	margin: 100px 0 50px 0;
+	display: block;	
+	@media (max-width: 1023px){margin:25px 0 15px 0;}
+}
+
+.two.columns{
+	width: 25%;
+}
+.two.columns img{
+} 
+
+
+.five.columns{
+	padding-left: 10px;
+	width:70%;
+}
+.top-menu{display: none;}

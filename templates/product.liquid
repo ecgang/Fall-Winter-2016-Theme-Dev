@@ -79,6 +79,7 @@
        
           <span class="final-sale smaller">{% if discount_floor > variant.price %}final sale{% endif %}</span>
         </p>
+        <p>{% if product.tags contains 'pre-order' %}Pre-Order{% endif %}</p>
       {% if settings.product_description_position == "top" %}
         {% if product.description != blank %}
          <div class="description" itemprop="description">
@@ -224,8 +225,7 @@
 					$('html,body').animate({scrollTop: $("#slider").offset().top -75 } ,'slow');
 				});	
 		    }
-  var submenu = $('.accordion-sub > dd').first().show();
-
+ 
 		});
 		</script>
 		

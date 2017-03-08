@@ -30,29 +30,47 @@
 		<link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
 		<link rel="canonical" href="{{ canonical_url }}" />
 		<script type="text/javascript" src="{{ 'app.js' | asset_url }}"></script>
-		{% if template contains 'index' or template contains 'philanthropy' or template contains 'our-story' %}
+		{% if template contains 'index' or template contains "campaign" or template contains 'philanthropy' or template contains 'our-story' %}
 		<script type="text/javascript">		
 			$(window).ready(function() {
-				var windowWidth = $(window).width();
-				$.scrollify({
-					section : "section",
-					interstitialSection : "footer",
-					easing: "easeOutExpo",
-					standardScrollElements: ".drawer-nav",
-					scrollSpeed: 500,
-					sectionName:false,
-					overflowScroll:false,
-					afterRender:function(){
-						if (windowWidth >= 1023) { 
-							$('.removeDesktop').remove();
-							
-							$.scrollify.update();						
-						}	
-						$.scrollify.update();
-					}
-				
-				});
+	
+	
+			    var fullPageCreated = false;
+			      createFullpage();
+
+			      function createFullpage() {
+			        if(fullPageCreated === false) {
+			          fullPageCreated = true;
+			          
+			           $('#fullpage').fullpage({
+			        normalScrollElements: '.drawer-nav',      
+			        sectionSelector: '.fp-section',
+			        lazyLoading: true
+			    
+			          });
+			         }
+			      }
+			      
+			      if(document.documentElement.clientWidth < 400) {
+			        $.fn.fullpage.destroy('all');
+			        createFullpage();
+			      }
+
+						$(window).resize(function() {
+			          //moblie width change 400
+						    if ($(window).width() > 400) {
+			            createFullpage();
+			          } else {
+			            if(fullPageCreated == true) {
+			              fullPageCreated = false;
+			              $.fn.fullpage.destroy('all');
+			            }
+			          }
+						   
 			});
+						});
+
+
 			
 		</script>
 
@@ -88,7 +106,7 @@
 		</div><span class="medium">({{ cart.item_count }})</span></a></div>
 			<div class="fixed-menu-container desktop_hidden">
 			<button type="button" class="drawer-toggle drawer-hamburger"><span class="sr-only">toggle navigation</span><span class="drawer-hamburger-icon"></span></button><a class="drawer-brand" href="{{ shop.url }}"><i class="icon icon-script-logo"></i>
-			{% if template contains 'index' %}<span class="tagline">A Philosophy of Living By Donna Karan</span>{% endif %}</a>
+			<span class="tagline">A Philosophy of Living By Donna Karan</span></a>
 			</div>
 			<nav class="drawer-nav" role="navigation">
 				<ul class="drawer-menu">
@@ -239,11 +257,6 @@
 {% unless template contains 'index' or template contains 'philanthropy' or template contains 'our-story' %}
 	{% include 'footer' %}
 	{% endunless %}
-	{% if template contains 'alchemist' %}
-		{% include 'shop-by-look' %}
-	{% elsif template contains 'holiday' %}	
-		{% include 'shop-by-look-holiday' %}
-	{% endif %}
 	{% if template contains 'product' %}
 	<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
 	<script type="text/javascript">

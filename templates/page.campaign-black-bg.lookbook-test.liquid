@@ -50,7 +50,7 @@ created to travel the many worlds you live in</p><br/>
 	            $('.fancybox-inner').append('{% capture add_to_cart_label %}{% if collection_handles contains "pre-order" %}{{ "collections.general.pre_order" | t }}{% else %}{{ "products.product.add_to_cart" | t }}{% endif %}{% endcapture %}<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }} " data-label={{ add_to_cart_label | json }} disabled="disabled" />');
 	          });    
 	        }
-</script>
+		</script>
 
 	</div>
 	<div class="full-width">

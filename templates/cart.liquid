@@ -10,14 +10,16 @@
 						<h2 class="subtotal">
 							Order Summary
 						</h2>
+						<div class="line"></div>
 
 						<p class="subtotal_amount">
-							<strong>Subtotal:</strong> {{ cart.total_price | money_with_currency }}
+							<strong class="left">Subtotal:</strong> <span class="right">{{ cart.total_price | money_with_currency }}</span>
 							{% comment %}
 							<small id="estimated-shipping" style="display:none">+ <em>{{ 0 | money }} {{ 'cart.shipping_calculator.estimated_shipping' | t }}</em></small>
 							{% endcomment %}
-
-							<small class="excluding_tax"><em>{{ 'cart.general.excluding_tax_shipping' | t }}</em></small>
+						</p>
+						<p class="clearfix">
+						<small class="excluding_tax"><em>{{ 'cart.general.excluding_tax_shipping' | t }}</em></small>
 						</p>
 
 						{% if settings.show_multiple_currencies %}
@@ -42,18 +44,18 @@
 						</p>
 						{% endif %}
 						{% if cart.item_count != 0 %}
-						<p>
+						<div class="shopping_actions">
+							{{ content_for_additional_checkout_buttons | google_button_options: 'transparent' }}
+							<input type="submit" class="action_button cta-button add_to_cart right" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
 							{% if cart.item_count > 0 %}
-								<div class="continue_shopping">
-									<a href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}">Continue Shopping</a>
+								<div class="continue_shopping left">
+									<a class="cta-button" href="{% if cart.items.first.product.collections != blank %}{{ cart.items.first.product.collections.last.url }}{% else %}/collections/all{% endif %}">Continue Shopping</a>
 								</div>
 							{% endif %}
-							{{ content_for_additional_checkout_buttons | google_button_options: 'transparent' }}
-							<input type="submit" class="action_button cta-button add_to_cart" id="checkout" name="checkout" value="{{ 'cart.general.checkout' | t }}" />
-						</p>
+						</div>
         				{% endif %}
-					
-						<div class="clearfix">
+						<div class="line mobile_hidden"></div>
+						<div class="clearfix mobile_hidden">
 							<h2>Customer Care</h2>
 							<p>If you have any questions, or if we can be of further assistance, please contact the Urban Zen online team.<br><br><b>855.755.4848</b><br>Our customer care line is open Monday to Friday, from 10am – 6pm EST.<br><i>We are closed on weekends and national holidays.</i><br><br>All available items will be processed within 2 business days. Ground shipping arrives in approximately 4 to 7 business days. FedEx 2Day® shipping will arrive in 2-5 business days from time of order.</p>
 						</div>
@@ -61,7 +63,7 @@
 				</div>
 			</div>
 			<div class="main" role="main">
-				<ul class="breadcrumb">
+				<ul class="breadcrumb mobile_hidden">
 				    <li class="breadcrumb__item breadcrumb__item--current">
 				      <a class="breadcrumb__link" href="/cart">Bag</a>
 				    </li>
@@ -131,6 +133,11 @@
 					<br class="clear" />
 					<br class="clear" />
 					{% endfor %}							
+				</div>
+				<div class="line desktop_hidden"></div>
+				<div class="clearfix desktop_hidden">
+					<h2>Customer Care</h2>
+					<p>If you have any questions, or if we can be of further assistance, please contact the Urban Zen online team.<br><br><b>855.755.4848</b><br>Our customer care line is open Monday to Friday, from 10am – 6pm EST.<br><i>We are closed on weekends and national holidays.</i><br><br>All available items will be processed within 2 business days. Ground shipping arrives in approximately 4 to 7 business days. FedEx 2Day® shipping will arrive in 2-5 business days from time of order.</p>
 				</div>
 			</div>
 		</div>

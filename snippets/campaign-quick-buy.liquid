@@ -19,7 +19,7 @@
 							<div class="shop-the-look-quick-buy">
 								{% include 'shop-the-look-quick-buy' %}
 							</div>					
-						</a>
+						
 					</div>				
 				{% endfor %}
 				{% capture colorTempList %}{{colorList}}{{variant.option2}},{% endcapture %}
@@ -61,11 +61,9 @@
 			{% assign colorName = color %}
 			{% for color in colors | limit:1 %}
 				<div color="{{color}}" title="{{product.title}}" class="thumbnail">
-					<a href="{{ variant.url | within: collection }}" itemprop="url">
 						<div class="shop-the-look-quick-buy">
 							{% include 'shop-the-look-quick-buy' %}
 						</div>
-					</a>
 				</div>
 			{% endfor %}	
 		{% endfor %}

@@ -69,12 +69,14 @@
       {% endif %}
 
       {% capture add_to_cart_label %}{{ 'products.product.add_to_cart' | t }}{% endcapture %}
-     {% if product.tags contains 'pre-order' %}Product ships after March 1st<br/><br/>{% endif %}
+     {% if product.tags contains 'pre-order' %}<p>Expected to ship prior to April 15th</p><br/>{% endif %}
       {% if product.tags contains "coming-soon" %}
        <button type="" name="" class="cta-button" data-label="AVAILABLE MID-DECEMBER" disabled><span class="coming-soon" >AVAILABLE MID-DECEMBER<br><span class="subtext">Call: 212.206.3999</span></span></button>
        {% elsif product.tags contains "call-to-purchase" %}
        <br>
         <button type="" name="" class="cta-button" data-label="AVAILABLE MID-DECEMBER" disabled><span class="coming-soon">CALL TO PURCHASE<br><span class="subtext">212.206.3999</span></span></button>
+        {% elsif product.tags contains 'pre-order' %}
+        <button type="submit" name="add" class="action_button add_to_cart add-to-bag cta-button" data-label='PRE-ORDER'><span class="text">PRE-ORDER</span></button>
        {% else %}
         <button type="submit" name="add" class="action_button add_to_cart add-to-bag cta-button" data-label={{ add_to_cart_label | json }}><span class="text">{{ add_to_cart_label }}</span></button>
        {% endif %}
