@@ -1,7 +1,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
   var submenu = $('.accordion-sub > dd').hide();
-  $('.open').on('click',function(e) {
+
+  $(document).on('click','.open', function(e) {
+    console.log('clicked!')
     e.preventDefault();
     $this = $(this);
     $target =  $this.parent().next();
@@ -19,8 +21,8 @@ $(document).ready(function() {
     }
     return false;
   });
-  
-  $('.sub-open').on('click',function(e) {
+   
+  $(document).on('click','.sub-open', function(e) {
     e.preventDefault();
     $this = $(this);
     $subTarget =  $this.parent().next();

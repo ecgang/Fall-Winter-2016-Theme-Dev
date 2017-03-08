@@ -59,7 +59,7 @@
 		                                  		<input checked="checked" name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}" class="{{product.id}}" > 
 		                                  		<label class="{{product.id}}" id="{{ variant.id }}" for="variant-{{ variant.id }}">{{ variant.option2 | escape }}</label> 		
 		                                  {% else %} 
-		                   			     <div data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
+		                   			     		<div data-variant="{{ variant.title }}" style="visibility: hidden;" class="p5 5a swatch-element {% if variant.available %}available{% else %}soldout{% endif %} swatch-img">
 		                                   		<input disabled="disabled"  style="opacity:0.4;" name="id" type="radio" value="{{ variant.id }}" id="variant-{{ variant.id }}"  class="disabled" > 
 		                                   		<label class="{{product.id}}" id="{{ variant.id }}" for="variant-{{ variant.id }}"  disabled="disabled" opacity="0.8">{{ variant.option2 | escape }}</label> 		
 		                                   {% endif %}

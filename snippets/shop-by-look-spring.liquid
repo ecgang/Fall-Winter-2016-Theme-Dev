@@ -7,8 +7,8 @@ $(window).ready(function() {
 		event.preventDefault();
 		var stateId = $(this);
 		$('.modal').removeClass('active');
-		$('.overlay').removeClass('active');
-		$('.overlay').addClass('active');
+		$('.modal_overlay').removeClass('active');
+		$('.modal_overlay').addClass('active');
 		$('.modal').addClass('active');
 		var productName = $(this).attr('title');
 		var link = '/products/'+ productName;
@@ -19,33 +19,32 @@ $(window).ready(function() {
 			$.ajax({
 				url: getUrl,
 				type:'GET',
-				
-				context: stateId,
-				success: function(data){
-					htmlContent = $(data).find('.swatch');
-					$(".modal").html($(data).find('.seven').html());
-					
-					function loadProduct() {		
-						
-						console.log(event.target);
-						if($(event.target).is('#lookbook-1')){
-							console.log('HERE!');
-							$('.seven').addClass('TEST');
-							$(stateId).addClass('TEST');
-							console.log(htmlContent);
-							$(htmlContent).find("[data-value^='Black Blockprintedsatin']").addClass('.swatch-selected');
-                        	
-                    	}
-                    	console.log('HERE after function');
-                    }
-				}
+				success: success
 			});
 		}
+		function success(data) {
+			$(".modal .one-half.left").html($(data).find('.product_slider'));
+			$(".modal .one-half.right").html($(data).find('.product_name, .price_info, .product_form'));
+			loadProduct(data);
+		}
+		function loadProduct() {		
+			console.log(event.target);
+			$('.modal').find(".swatch-element.size").show();
+			$('.modal').find(".size_chart").hide();
+        	
+			if($(event.target).is('#lookbook-1')){
+				console.log('HERE!');
+				$('.modal').find(".swatch-element.color.black-blockprintedsatin").show();
+				$('.modal').find("li.black-blockprintedsatin").first().show().css('opacity','1');
+        		$('.modal').find("[data-value^='Black Blockprintedsatin']").addClass('swatch-selected');
+    		}
+    		{% include 'addToCart-ajax' %}
+    		console.log('HERE after function');
+    	}
 	});	
-	
 	$(document).on('click','.close', function(event){
 		$('.modal').removeClass('active');
-		$('.overlay').removeClass('active');
+		$('.modal_overlay').removeClass('active');
 
 	});
 });

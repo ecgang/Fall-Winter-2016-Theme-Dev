@@ -2383,8 +2383,12 @@ main .product{padding:0 30px;box-sizing:border-box;@media all and (max-width: 10
 }
 
 dt{position:relative;cursor:pointer;}
-dt a.open,dt a.sub-open{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;}
-
+dt a.open,dt a.sub-open{position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;z-index: 9;}
+dt .right{
+  position: absolute;
+  right: 0;
+  z-index: 0;
+}
 
 
  .quick-buy{	 
@@ -2770,7 +2774,7 @@ a.drawer-brand {
 .drawer-open .drawer-overlay {
   display: block;
 }
-.overlay{
+.overlay,.modal_overlay{
   display:none;
 }
 .drawer-right-open .overlay{
@@ -3431,7 +3435,7 @@ a.drawer-brand{color:#f5f1e1;}
 }
 .modal.active{display:block;}
 
-.overlay{
+.overlay,.modal_overlay{
   position:fixed;
   background:#000;
   z-index: 998;
@@ -3442,7 +3446,7 @@ a.drawer-brand{color:#f5f1e1;}
   height: 100%;
   overflow: hidden;
 }
-.overlay.active{
+.overlay.active,.modal_overlay.active{
   display: block;
 }
 
@@ -3712,5 +3716,7 @@ a.drawer-brand{color:#f5f1e1;}
 }
 
 
-
+.modal #slider.carousel-slider{
+  width:100%;
+}
 
