@@ -104,7 +104,7 @@
 				
 				{% if product.tags contains 'pre-order' %}
 
-				<input type="submit" id="addcart" name="add" value="PRE-ORDER" class="{% if product.tags contains 'no-choices'  %}no-choices {% endif %} action_button add_to_cart add-to-bag cta-button pull-right {{product.id}}" data-label="PRE-ORDER" disabled="disabled" />	
+				<input type="submit" id="addcart" name="add" value="PRE-ORDER" class="{% if product.variants.size == 1  %}no-choices {% endif %} action_button add_to_cart add-to-bag cta-button pull-right {{product.id}}" data-label="PRE-ORDER" disabled="disabled" />	
 				{% else %}
 				<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{product.id}}" data-label={{ add_to_cart_label | json }} disabled="disabled" />
 				{% endif %}
