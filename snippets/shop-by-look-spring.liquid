@@ -1,8 +1,6 @@
 <script type="text/javascript">
 
-$(window).ready(function() {
-	windowWidth = $(window).width();
-	
+$(document).ready(function() {
 	$(document).on('click','.quick_shop_modal',function(event) {
 		event.preventDefault();
 		var stateId = $(this);
@@ -27,7 +25,7 @@ $(window).ready(function() {
 			$(".modal .one-half.right").html($(data).find('.product_name, .price_info, .product_form'));
 			loadProduct(data);
 		}
-		function loadProduct() {		
+		function loadProduct(data) {
 			console.log(event.target);
 			$('.modal').find(".swatch-element.size").show();
 			$('.modal').find(".size_chart").hide();
@@ -45,7 +43,6 @@ $(window).ready(function() {
 	$(document).on('click','.close', function(event){
 		$('.modal').removeClass('active');
 		$('.modal_overlay').removeClass('active');
-
 	});
 });
 </script>

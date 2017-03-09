@@ -1118,6 +1118,7 @@ main{
     height: 100%;
     margin: 0 auto -256px;
     background: #f7f6f2;
+    overflow-x: hidden;
 
 }
 [class*='campaign-'] main,.black-bg main{
@@ -2691,7 +2692,7 @@ li.item.hpslide1.fadeIn{
 .page-our-story-black .section.two{background-image:url({{ 'dm_ourstory_02.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_02.jpg' | asset_url | split:'?' | first }});}}
 .page-our-story-black .section.three{background-image:url({{ 'dm_ourstory_03.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_01.jpg' | asset_url | split:'?' | first }});}}
 .page-our-story-black .section.four{background-image:url({{ 'dm_ourstory_05.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_05.jpg' | asset_url | split:'?' | first }});}}
-.page-our-story-black .section.five{background-image:url({{ 'dm_ourstory_04.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_03.jpg' | asset_url | split:'?' | first }});}}
+.page-our-story-black .section.five{background-image:url({{ 'dm_ourstory_04.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_03_darker.jpg' | asset_url | split:'?' | first }});}}
 .page-our-story-black .section.six{background-image:url({{ 'dm_ourstory_06.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_04.jpg' | asset_url | split:'?' | first }});}}
 
 /*.page-contact-black {background-image:url({{ 'client-services.jpg' | asset_url | split:'?' | first}});background-size:cover;}*/
@@ -3355,7 +3356,7 @@ a.drawer-brand{color:#f5f1e1;}
       float:right;
       display: block;
       line-height: 20px;
-      @media (max-width: 1024px){line-height: normal;}
+      @media (max-width: 1024px){line-height: 25px;}
     }
   }
   &.white{
@@ -3720,3 +3721,27 @@ a.drawer-brand{color:#f5f1e1;}
   width:100%;
 }
 
+
+/* fix iOS bug not displaying 100vh correctly */
+/* ipad */
+.fullheight {
+    @media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+    height: 768px;
+    }
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+       height: 1024px;
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2) {
+    height: 320px;
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2) {
+    height: 568px;
+    }
+/* iPhone 4 */
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
+    height: 320px;
+    }
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
+    height: 480px;
+    }
+}    

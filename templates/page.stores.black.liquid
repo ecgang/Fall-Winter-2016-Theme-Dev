@@ -211,7 +211,7 @@
 $(document).ready(function() {
 		var accordion = $('.accordion > dd').hide();
 		var submenu = $('.accordion-sub > dd').hide();
-	$('.open').on('touchstart click',function(e) {
+	$('.open').on('click',function(e) {
 		e.preventDefault();
 		$this = $(this);
 		$target =  $this.parent().next();
@@ -231,7 +231,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	$('.sub-open').on('touchstart click',function(e) {
+	$('.sub-open').on('click',function(e) {
 		console.log('sub clicked!');
 		e.preventDefault();
 		$this = $(this);
