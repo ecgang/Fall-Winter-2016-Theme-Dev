@@ -1,4 +1,6 @@
     $(".product_form").submit(function(e) {
+      $('.modal').removeClass('active');
+      $('.modal_overlay').removeClass('active');
       e.preventDefault();
       var $addToCartForm = $(this);  
  var $cartForm = $('form#cart');  

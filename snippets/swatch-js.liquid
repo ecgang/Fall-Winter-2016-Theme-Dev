@@ -9,22 +9,20 @@ $('ul.slides li.thumbnail-curated-image').click(function(event) {
   } 
 });
 
-
-$('.swatch-element.size').click(function() {
-
+$(document).on('click','.swatch-element.size', function(){
+  console.log('IN SWATCH ELEMENT CLICK FUNCTION')
   if($(this).hasClass('soldout')) {
-   
+
   }
-  
+
   $('.swatch-element.size').removeClass('swatch-selected');
   $(this).addClass('swatch-selected');
 });
-
-$('.swatch-element.color').click(function() {
+$(document).on('click','.swatch-element.color', function(){
   $('.override-hide').each(function() {
-    
+
     $(this).css('transform', 'none');
-    
+
   });
   var checkForDisabled = $('.swatch-element.color').find('input:disabled').length;
   var isThisDisabled = $(this).find('input:disabled');
@@ -52,29 +50,29 @@ $('.swatch-element.color').click(function() {
         console.log(dataValue+' in loop');
       }
     });
-    
-    
+
+
     
     setTimeout(checkLength, 25);
-    
-    
+
+
     function checkLength() {
      var length = $('.swatch-element.size.available').length;
      if(length == 1) {
-      
+
        $('.swatch-element.size').removeClass('swatch-selected');
        $('.swatch-element.size.available').addClass('swatch-selected');
-       
+
      }
    }
-   
+
  });
 
 var colorLength = $('.swatch-element.color').length;
 var colorSoldOutLength = $('.swatch-element.color').find('img.crossed-out.always-show').length;
 var hasVariant = window.location.href.indexOf('?variant=');
 if(colorLength == colorSoldOutLength) {
- 
+
   var color = $('.swatch-element.color:first').attr('data-value');
   var colorString = color.toLowerCase().replace(/ /g, '-');
   console.log(colorString);
@@ -87,7 +85,7 @@ if(colorLength == colorSoldOutLength) {
        // amount = amount + height;
      });
   }, 100); 
-  
+
 }
 
 setTimeout(function() {
@@ -105,5 +103,5 @@ $('.swatch-element.soldout').each(function() {
   $(this).find('.crossed-out').addClass('always-show');
   $(this).find('input').removeAttr('disabled');
   $(this).removeClass('soldout');
-  
+
 });

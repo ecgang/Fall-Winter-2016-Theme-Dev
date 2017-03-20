@@ -4,12 +4,15 @@ $(document).ready(function() {
 	$(document).on('click','.quick_shop_modal',function(event) {
 		event.preventDefault();
 		var stateId = $(this);
+		modal = $('body').append('<div class="modal custom quick_buy_popup"><div id="mdiv"><div class="mdiv"><div class="md"></div></div></div><div class="one-half left"></div><div class="one-half right"></div></div><div class="modal_overlay close"></div>');
 		$('.modal').removeClass('active');
 		$('.modal_overlay').removeClass('active');
 		$('.modal_overlay').addClass('active');
 		$('.modal').addClass('active');
 		var productName = $(this).attr('title');
+		var productId = $(this).attr('data-product-id');
 		var link = '/products/'+ productName;
+
 		link = link.toLowerCase().replace(/ /g,'-');
 		var getUrl = link;
 		var _opened = $(this).parent().hasClass("active");
@@ -20,12 +23,23 @@ $(document).ready(function() {
 				success: success
 			});
 		}
+		return false;
 		function success(data) {
 			$(".modal .one-half.left").html($(data).find('.product_slider'));
 			$(".modal .one-half.right").html($(data).find('.product_name, .price_info, .product_form'));
+			
+			{% include 'addToCart-ajax' %}
+
+
 			loadProduct(data);
 		}
 		function loadProduct(data) {
+			$(function() {    
+			  $product = $('.product-' + {{ product.id }});
+			  new Shopify.OptionSelectors("product-select-{{ product.id }}{{ product-form }}", { product: {{ product | json }}, onVariantSelected: selectCallback{% if template contains 'product' or template contains 'lookbook' %}, enableHistoryState: true{% endif %} });
+			  });
+			  {% include 'linked-options' %}
+ 
 			console.log(event.target);
 			$('.modal').find(".swatch-element.size").show();
 			$('.modal').find(".size_chart").hide();
@@ -36,13 +50,30 @@ $(document).ready(function() {
 				$('.modal').find("li.black-blockprintedsatin").first().show().css('opacity','1');
         		$('.modal').find("[data-value^='Black Blockprintedsatin']").addClass('swatch-selected');
     		}
-    		{% include 'addToCart-ajax' %}
+    		if($(event.target).is('#lookbook-2')){
+				console.log('HERE!');
+				$('.modal').find(".swatch-element.color.black-blockprintedsatin").show();
+				$('.modal').find("li.black-blockprintedsatin").first().show().css('opacity','1');
+        		$('.modal').find("[data-value^='Black Blockprintedsatin']").addClass('swatch-selected');
+    		}
+    		
     		console.log('HERE after function');
+    		
+    		$('.swatch-element').click(function(){
+    		
+				console.log(this);
+				$(this).children('input[type="radio"]').prop("checked",true).trigger("change");
+			});
+
     	}
+
+    	
 	});	
+	
 	$(document).on('click','.close', function(event){
 		$('.modal').removeClass('active');
 		$('.modal_overlay').removeClass('active');
 	});
 });
+
 </script>
