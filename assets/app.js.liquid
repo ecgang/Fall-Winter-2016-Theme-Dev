@@ -529,7 +529,7 @@ $(".quick_shop").fancybox({
  $successMessage.find('span').text('Added To Bag').addClass('fadeIn');
           window.setTimeout(function(){
             $addToCartBtn.removeAttr('disabled').removeClass('disabled');
-            $('input[type="submit"]').attr( "disabled", "disabled" );
+            $('.fancybox-opened input[type="submit"]').attr( "disabled", "disabled" );
 
             $addToCartBtn.find('span').addClass("fadeOut").text($addToCartBtn.data('label')).removeClass('fadeIn').removeClass("fadeOut").addClass('zoomIn');
           }, 1000);
