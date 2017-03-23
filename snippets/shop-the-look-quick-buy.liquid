@@ -102,8 +102,7 @@
 							{% endfor %}
 							<script>
 								$(document).ready(function() {
-									if(!$('input[type="submit"]').hasClass('no-choices')){
-										$('.swatch-element').on('click', 'label.{{product.id}}', function() {
+									$('.swatch-element').on('click', 'label.{{product.id}}', function() {
 											$('input[type="submit"].{{product.id}}').removeAttr('disabled');
 											$('label').removeClass('selected');
 											inputValue = $(this).parent().children('input[name="id"]').val();
@@ -111,9 +110,10 @@
 											$(this).addClass('selected');
 											$('input[type="submit"].{{product.id}}').removeAttr('disabled');
 											$('.warning').empty();
-											console.log($(this).parent().parent().parent().parent().children());
 											$(this).parent().parent().parent().parent().children('.empty').removeClass('disabled-container');
 										}); 
+									if(!$('input[type="submit"]').hasClass('no-choices')){
+										
 									}
 									else{
 										console.log('fired');
