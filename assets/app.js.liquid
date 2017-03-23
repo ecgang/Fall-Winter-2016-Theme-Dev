@@ -524,6 +524,7 @@ $(".quick_shop").fancybox({
           $('.fancybox-opened .empty').removeClass('enabled-container');
           $('.fancybox-opened label').removeClass('selected');
           $(document).find("[id^=product-form-]")[0].reset();
+          
 
           $addToCartBtn.find('span').text({{ 'products.product.add_to_cart_success' | t | json }}).removeClass('zoomOut').addClass('fadeIn');
  $successMessage.find('span').text('Added To Bag').addClass('fadeIn');
