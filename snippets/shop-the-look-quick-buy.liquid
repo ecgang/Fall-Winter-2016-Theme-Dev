@@ -102,19 +102,25 @@
 							{% endfor %}
 							<script>
 								$(document).ready(function() {
-									$('input[type="submit"].no-choices').removeAttr('disabled');
-								});
-								$('.swatch-element').on('click', 'label.{{product.id}}', function() {
-									$('input[type="submit"].{{product.id}}').removeAttr('disabled');
-									$('label').removeClass('selected');
-									inputValue = $(this).parent().children('input[name="id"]').val();
-									$('input.id-input').attr('value', inputValue);
-									$(this).addClass('selected');
-									$('input[type="submit"].{{product.id}}').removeAttr('disabled');
-									$('.warning').empty();
-									console.log($(this).parent().parent().parent().parent().children());
-									$(this).parent().parent().parent().parent().children('.empty').removeClass('disabled-container');
-								});                            
+									if(!$('input[type="submit"]').hasClass('no-choices')){
+										$('.swatch-element').on('click', 'label.{{product.id}}', function() {
+											$('input[type="submit"].{{product.id}}').removeAttr('disabled');
+											$('label').removeClass('selected');
+											inputValue = $(this).parent().children('input[name="id"]').val();
+											$('input.id-input').attr('value', inputValue);
+											$(this).addClass('selected');
+											$('input[type="submit"].{{product.id}}').removeAttr('disabled');
+											$('.warning').empty();
+											console.log($(this).parent().parent().parent().parent().children());
+											$(this).parent().parent().parent().parent().children('.empty').removeClass('disabled-container');
+										}); 
+									}
+									else{
+										console.log('fired');
+										$('input[type="submit"].no-choices').prop('disabled',false);	
+									 	$('input[type="submit"]').parent().removeClass('disabled-container');
+									}  
+								});                        
 
 							</script>
 						</div>
