@@ -2018,7 +2018,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
             var email = form.find('input[type=email]');
             var label = form.find('label[for=' + email.attr('id') + ']');
             var button = form.find('button[type=submit]');          
-var msgPopup = document.getElementById('.msgPopup');
+			var msgPopup = document.getElementById('.msgPopup');
             var settings = $.extend({
                 'url': form.attr('action'),
                 'language': 'en'
@@ -2742,8 +2742,7 @@ $(document).ready(function() {
 			slideshowSpeed: 5000,
 			animationSpeed:1500,
 			touch:true,
-			initDelay:10000,
-		    start: function(){
+		    /*start: function(){
 		         $('img').show(); 
 		         function iOSversion() {
 			  		if (/iP(hone|od|ad)/.test(navigator.platform)) {
@@ -2758,7 +2757,7 @@ $(document).ready(function() {
 				$(".text.ipad-hide").hide();
 				$(".text.ipad").show();
 			}
-		    },
+		    },*/
 			controlNav:true
 	    });
 	
