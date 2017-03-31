@@ -45,7 +45,7 @@
 	  	{% if product.vendor == "Urban Zen" %}
 		{% else %}
         	<p class="p2 vendor">	
-          	  <span class="brand" itemprop="brand"><a href="{% if product.tags contains {{product.vendor}} %}/collections/{% endif %}{% if product.tags contains 'Haiti Artisans' %}haiti-artisans/{% endif %}{{product.vendor | handleize }}" name="{{product.vendor}}">{{ product.vendor}}</a></span>
+          	  <span class="brand" itemprop="brand"><a href="{% if product.tags contains {{product.vendor}} %}/collections/{% endif %}{{product.vendor | handleize }}" name="{{product.vendor}}">{{ product.vendor}}</a></span>
         	</p>
       	{% endif %}
 	  {% endif %}
