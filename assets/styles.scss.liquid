@@ -318,6 +318,7 @@ Description: Shopify Theme
   .fixed-menu-container{position: fixed;
       width: 100%;
       background: #000;
+      text-align: center;
       z-index: 9997;padding-bottom:0;padding-top:5px;box-sizing:border-box;}
   
 
@@ -2048,10 +2049,8 @@ li.success_message,li.success_message::after{border:0 !important;padding-left:20
 .newsletter_popup button.cta-button{width:25% !important;@media all and (max-width: 1023px) {width:30% !important;}}
 .popup-text{position:absolute; top:20px;left:20px;max-width:55%;text-align:left;@media all and (max-width: 1023px) {max-width:60% !important;left:10px;top:10px;}}
 .popup-text.right{position:absolute; top:30px;right:30px;left:inherit;max-width:55%;text-align:right;@media all and (max-width: 1023px) {max-width:60% !important;left: inherit;right:20px; top:30px;}}
-.msgPopup.absolute-position{z-index: 9999;width: 300px;height: auto;padding: 20px;position: relative;top: 50%;left: 50%;text-align:center;background:#f5f1e1;margin: -70px 0 0 -170px;display:none;}
-.msgPopup.absolute-position p{margin-bottom:0;}
-.msgPopup p{text-align:center;color: #000;}
-.msgPopup.active p{color:#fff;}
+
+
 .msgPopup{display:none;}
 .newsletter .msgPopup.active{display:block;}
 
@@ -2217,7 +2216,7 @@ img.hidden,.shop-alt img.display_look.collection_hidden,[class^='page-lookbook-'
   top:0;
   left:0;
   width: 100%;
-  border: 10px solid;
+  border: 10px solid #f7f6f2;
   @media all and (max-width: 1023px) {
     position:relative;
     padding:10px !important;
@@ -2329,6 +2328,8 @@ main .product{padding:0 30px;box-sizing:border-box;@media all and (max-width: 10
  
  @media all and (max-width: 1023px){padding:15px 20px 10px 20px;}
 }
+
+.accordion-sub ul{margin-bottom:20px;}
 
 .product .accordion.faq dt{
  padding:15px 0; 
@@ -2693,7 +2694,6 @@ li.item.hpslide1.fadeIn{
 .index .section{height:100vh;position: relative;background-size: cover;background-color:#000;@media only screen and (max-width: 1023px) {background-position-y:50px;}}
 .simpleHomeSlider{background-color:#000;}
 .text.ipad{display: none;}
-
 .hpslide1{background: #000;}
 .hpslide2{background-image:url({{ 'd_UZR_HP_02.jpg' | asset_url | split:'?' | first }});}
 .hpslide3{background-image:url({{ 'd_UZR_HP_03.jpg' | asset_url | split:'?' | first }});}
@@ -2710,6 +2710,7 @@ li.item.hpslide1.fadeIn{
 .slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'M_UZR_HP_03new.jpg' | asset_url | split:'?' | first }});}}
 .slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_UZR_HP_04x.jpg' | asset_url | split:'?' | first }});}}
 .slide5{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'M_HP_5_Apple-Award.jpg' | asset_url | split:'?' | first }});}}
+
 
 
 
@@ -3089,6 +3090,7 @@ header .logo{
 		padding:5px 0;
 		line-height:0;
 		color:#f5f1e1;
+
 		}
 	}
 .drawer-brand:focus{outline: none;}
@@ -3102,7 +3104,11 @@ header .logo{
 	}
 }	
 		
-a.drawer-brand{color:#f5f1e1;}
+a.drawer-brand{color:#f5f1e1;display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    position: relative;}
 
 .index .top-menu input,.black-bg .top-menu input{border-color:#f5f1e1; color: #f5f1e1 !important;}	
 	 
@@ -3405,7 +3411,6 @@ a.drawer-brand{color:#f5f1e1;}
     bottom: 5px; 
     text-align: right;
     span{
-      float:right;
       display: block;
       line-height: 20px;
       @media (max-width: 1024px){line-height: 25px;}
