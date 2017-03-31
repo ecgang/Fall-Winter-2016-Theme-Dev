@@ -258,7 +258,7 @@
 				console.log($(document).find('a[href=""]').next('dd').show());
 
 
-				$('.open').on('click',function(e) {
+				$('.open').on('touchstart click',function(e) {
 
 					$this = $(this);
 					$target =  $this.parent().next();
@@ -278,7 +278,7 @@
 					}
 
 				});
-				$('.sub-open').on('click',function(e) {
+				$('.sub-open').on('touchstart click',function(e) {
 					console.log('sub clicked!');
 					e.preventDefault();
 					$this = $(this);
