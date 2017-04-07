@@ -2602,15 +2602,15 @@ dt .right{
   .text.right.top{
     left: 75%;
     top:27.5%;
-    padding-left: 2%;
+    padding-left: 15px;
     @media only screen and (max-width: 1023px){left:50%;}
   }
   .text.right.bottom{
-    left: 75%;
+    left: 80%;
     top: 90%;
     padding-left: 0;
     max-width: 500px;
-    @media only screen and (max-width: 1023px){left:50%;}
+    @media only screen and (max-width: 1023px){left:50%;padding-left:15px;position:relative;transform:none;background:#000;top: auto;left:auto;}
   }
   .text.fullscreen{
     width:100%;
@@ -2699,6 +2699,8 @@ li.item.hpslide1.fadeIn{
 .hpslide2{background-image:url({{ 'D_HP_2_new_a.jpg' | asset_url | split:'?' | first }});}
 .hpslide3{background-image:url({{ 'D_HP_3_new_a.jpg' | asset_url | split:'?' | first }});}
 .hpslide4{background-image:url({{ 'D_HP_4_new_c.jpg' | asset_url | split:'?' | first }});}
+.hpslide5{background-image:url({{ 'd_Events_AA_Main.jpg' | asset_url | split:'?' | first }});}
+
 
 
 
@@ -2709,7 +2711,7 @@ li.item.hpslide1.fadeIn{
 .slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'M_HP_2_new_a.jpg' | asset_url | split:'?' | first }});}}
 .slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'M_HP_3_new_a.jpg' | asset_url | split:'?' | first }});}}
 .slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'M_HP_4_new_a.jpg' | asset_url | split:'?' | first }});}}
-
+.slide5{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_5_c.jpg' | asset_url | split:'?' | first }});}}
 
 
 .hpslide1a{background-image:url({{ 'D_Campaign_Slider_1800x1150_1.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'M_Campaign_Slider_01.jpg' | asset_url | split:'?' | first }});}}
@@ -2765,13 +2767,12 @@ li.item.hpslide1.fadeIn{
 }
 
 a.drawer-brand {
-  font-size: 1.5rem;
-  display: block;
-  padding-right: .75rem;
-  padding-left: .75rem;
-  text-decoration: none;
-  color: #222;
-  padding:0;
+ color:#f5f1e1;
+ display: inline-block;
+    text-align: center;
+  
+    float: none;
+    position: relative;
   @media only screen and (max-width: 1023px) {color:#f5f1e1;}
 }
 
@@ -3083,7 +3084,6 @@ header .logo{
 .drawer-brand{margin-bottom:35px;@media only screen and (max-width: 1023px){
 		margin: 0 auto;
 		float: none;
-		
 		text-align: center;
 		padding:5px 0;
 		line-height:0;
@@ -3099,14 +3099,11 @@ header .logo{
 	@media only screen and (max-width: 1023px){
 		visibility:hidden;
 		padding:0;
+    display: none;
 	}
 }	
 		
-a.drawer-brand{color:#f5f1e1;display: inline-block;
-    text-align: center;
-    margin: 0 auto;
-    float: none;
-    position: relative;}
+
 
 .index .top-menu input,.black-bg .top-menu input{border-color:#f5f1e1; color: #f5f1e1 !important;}	
 	 
@@ -3394,6 +3391,9 @@ a.drawer-brand{color:#f5f1e1;display: inline-block;
   background-size: cover;
   margin-bottom: 20px;
   position: relative;
+}
+.events-banner .first.bg-full{
+  @media (max-width: 1023px){height:auto;} 
 }
 
 .campaign-caption{
@@ -3828,5 +3828,5 @@ a.drawer-brand{color:#f5f1e1;display: inline-block;
 input[disabled]{pointer-events: none;}
 
 
-
+.page-movement-black .container{margin-top: 0;}
 

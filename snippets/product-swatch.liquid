@@ -38,7 +38,7 @@
 </div>
 {% else %}
 <div class="swatch clearfix" data-option-index="{{ option_index }}">
-	 <p class="p6 option-title">
+	 <p class="p6 option-title {% if is_color %}color-title{% endif %}">
 		 {{ swatch }}{% if is_color %}:{% endif %}
 		 {% if variant.option1 != blank and is_color %}
 			 {% assign values = '' %}
@@ -72,9 +72,9 @@
       {% assign values = values | split: ',' %}
 	  
       <div data-value="{{ value | escape }}" class="p5 swatch-element {% if is_color %}color {% else %} size {% endif %}{{ value | handle }} {% if variant.available %}available{% else %}soldout{% endif %} {{option.title}}">
-        <input class="{{ variant.id }}" id="swatch-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} data-price="{{variant.price | money | strip_html}}" data-sale-price="{{variant.compare_at_price | money}}" data-sale-lang="{% if variant.compare_at_price > variant.price %}final sale{% endif %}" />
+        <input variant-id="{{ variant.id }}" product-id="{{ product.id }}" class="{{ variant.id }}" id="swatch-{{ option_index }}-{{ value | handle }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} data-price="{{variant.price | money | strip_html}}" data-sale-price="{{variant.compare_at_price | money}}" data-sale-lang="{% if variant.compare_at_price > variant.price %}final sale{% endif %}" />
         {% if is_color %}
-        <label class="{{ variant.id }}" id="{{ value | handle }}" for="swatch-{{ option_index }}-{{ value | handle }}" style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})">
+        <label class="{{ variant.id }}" variant-id="{{ variant.id }}" id="{{ value | handle }}" for="swatch-{{ option_index }}-{{ value | handle }}" style="background-color: {{ value | split: ' ' | last | handle }}; background-image: url({{ value | handle | append: '.' | append: file_extension | asset_url }})">
           <img class="crossed-out" src="{{ 'soldout-square.png' | asset_url }}" />
         </label>
 

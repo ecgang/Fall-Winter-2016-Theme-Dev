@@ -1,79 +1,64 @@
 <script type="text/javascript">
 
-$(document).ready(function() {
-	$(document).on('click','.quick_shop_modal',function(event) {
-		event.preventDefault();
-		var stateId = $(this);
-		modal = $('body').append('<div class="modal custom quick_buy_popup"><div id="mdiv"><div class="mdiv"><div class="md"></div></div></div><div class="one-half left"></div><div class="one-half right"></div></div><div class="modal_overlay close"></div>');
-		$('.modal').removeClass('active');
-		$('.modal_overlay').removeClass('active');
-		$('.modal_overlay').addClass('active');
-		$('.modal').addClass('active');
-		var productName = $(this).attr('title');
-		var productId = $(this).attr('data-product-id');
-		var link = '/products/'+ productName;
-
-		link = link.toLowerCase().replace(/ /g,'-');
-		var getUrl = link;
-		var _opened = $(this).parent().hasClass("active");
-		if (_opened === false){   
-			$.ajax({
-				url: getUrl,
-				type:'GET',
-				success: success
-			});
-		}
-		return false;
-		function success(data) {
-			$(".modal .one-half.left").html($(data).find('.product_slider'));
-			$(".modal .one-half.right").html($(data).find('.product_name, .price_info, .product_form'));
-			
-			{% include 'addToCart-ajax' %}
-
-
-			loadProduct(data);
-		}
-		function loadProduct(data) {
-			$(function() {    
-			  $product = $('.product-' + {{ product.id }});
-			  new Shopify.OptionSelectors("product-select-{{ product.id }}{{ product-form }}", { product: {{ product | json }}, onVariantSelected: selectCallback{% if template contains 'product' or template contains 'lookbook' %}, enableHistoryState: true{% endif %} });
-			  });
-			  {% include 'linked-options' %}
- 
-			console.log(event.target);
-			$('.modal').find(".swatch-element.size").show();
-			$('.modal').find(".size_chart").hide();
-        	
-			if($(event.target).is('#lookbook-1')){
-				console.log('HERE!');
-				$('.modal').find(".swatch-element.color.black-blockprintedsatin").show();
-				$('.modal').find("li.black-blockprintedsatin").first().show().css('opacity','1');
-        		$('.modal').find("[data-value^='Black Blockprintedsatin']").addClass('swatch-selected');
-    		}
-    		if($(event.target).is('#lookbook-2')){
-				console.log('HERE!');
-				$('.modal').find(".swatch-element.color.black-blockprintedsatin").show();
-				$('.modal').find("li.black-blockprintedsatin").first().show().css('opacity','1');
-        		$('.modal').find("[data-value^='Black Blockprintedsatin']").addClass('swatch-selected');
-    		}
-    		
-    		console.log('HERE after function');
-    		
-    		$('.swatch-element').click(function(){
-    		
-				console.log(this);
-				$(this).children('input[type="radio"]').prop("checked",true).trigger("change");
-			});
-
-    	}
-
-    	
+	$(document).ready(function() {
+		$(document).on('click','.quick_shop_modal',function(event) {
+			event.preventDefault();
+			var stateId = $(this);
+			modal = $('body').prepend('<div class="modal custom quick_buy_popup"><div id="mdiv"><div class="mdiv"><div class="md"></div></div></div><div class="one-half left"><img src="" alt="" /></div><div class="one-half right"></div></div><div class="modal_overlay close"></div>');
+			$('.modal').removeClass('active');
+			$('.modal_overlay').removeClass('active');
+			$('.modal_overlay').addClass('active');
+			$('.modal').addClass('active');
+			var productName = $(this).attr('title');
+			var link = '/products/'+ productName;
+			link = link.toLowerCase().replace(/ /g,'-');
+			var getUrl = link;		
+			var _opened = $(this).parent().hasClass("active");
+			if (_opened === false){   
+				$.ajax({
+					url: getUrl,
+					type:'GET',
+					async:false,
+					success: function(data){ 
+						success(data);
+					}
+				});
+			}
+			function success(data) {
+				var colorSelected = '';
+				$(".modal .one-half.left").html($(data).find('.product_slider'));
+				$(".modal .one-half.right").html($(data).find('.product_name, .price_info, .form_container'));
+				
+				loadProduct(data);
+				return data;
+			}
+			function loadProduct(data) {
+				
+				$('.product_name').wrap('<a href="'+ getUrl +'?variant='+ variantId +'"></a>');
+				$('.product_slider img').wrap('<a href="'+ getUrl +'?variant='+ variantId +'"></a>');
+				$('.action_button').prop('disabled',true);
+				$('.action_button.no-choices').removeProp('disabled');
+				{% include 'addToCart-ajax' %}
+				$('.modal').find(".swatch-element.size").show();
+				$('.modal').find(".size_chart,.color-title,.size[data-value='O/S']").hide();
+				$(".size[data-value='O/S']").parent().children('.option-title').hide();
+			}
 	});	
-	
-	$(document).on('click','.close', function(event){
-		$('.modal').removeClass('active');
-		$('.modal_overlay').removeClass('active');
-	});
-});
 
+	$(document).on('click','.close', function(){
+		$('.modal_overlay, .modal').remove();
+	});
+	$(document).on('click', '.swatch-element', function() {
+		console.log('in click');
+		$('.modal .action_button').removeProp('disabled');
+		$('label').removeClass('selected');
+		inputValue = $(this).parent().children('input[name="id"]').val();
+		$('input.id-input').attr('value', inputValue);
+		$(this).addClass('selected');
+		$('.warning').empty();
+	}); 
+	     
+});
 </script>
+
+

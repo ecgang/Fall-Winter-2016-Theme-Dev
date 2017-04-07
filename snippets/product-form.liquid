@@ -15,7 +15,7 @@
           <p><em>{{ product.variants.first.inventory_quantity }} {{ items_left_text }}</em></p>
         {% endif %}
       </div>
-    {% endif %}
+    {% endif %} 
     
     {% if product.options.size > 1 %}
       <div class="select">
@@ -77,17 +77,16 @@
        <br>
         <button type="" name="" class="cta-button" data-label="AVAILABLE MID-DECEMBER" disabled><span class="coming-soon">CALL TO PURCHASE<br><span class="subtext">212.206.3999</span></span></button>
         {% elsif product.tags contains 'pre-order' %}
-        <button type="submit" name="add" class="action_button add_to_cart add-to-bag cta-button" data-label='PRE-ORDER'><span class="text">PRE-ORDER</span></button>
+        <button type="submit" name="add" class="{% if product.variants.size == 1 or product.first_available_variant.option2 == 'O/S'  %}no-choices {% endif %} action_button add_to_cart add-to-bag cta-button" data-label='PRE-ORDER'><span class="text">PRE-ORDER</span></button>
        {% else %}
-        <button type="submit" name="add" class="action_button add_to_cart add-to-bag cta-button" data-label={{ add_to_cart_label | json }}><span class="text">{{ add_to_cart_label }}</span></button>
+        <button type="submit" name="add" class="{% if product.variants.size == 1 or product.first_available_variant.option2 == 'O/S'  %}no-choices {% endif %} action_button add_to_cart add-to-bag cta-button" data-label={{ add_to_cart_label | json }}><span class="text">{{ add_to_cart_label }}</span></button>
        {% endif %}
       
     </div>  
   </form>
-
   {% if product.variants.size > 1 or product.options.size > 1 %}
     <script type="text/javascript">
-    console.log('IN THIS FUNCTION');
+    Shopify.money_format = "{{ shop.money_format }}";
       // <![CDATA[  
         $(function() {    
           $product = $('.product-' + {{ product.id }});
@@ -108,7 +107,7 @@
           {% endif %}
         });
       // ]]>
-      console.log({{product}});
+      
       
     </script>
   {% endif %}
@@ -127,7 +126,8 @@
 
       });
   </script>
-  <script>
+  <script type="text/javascript" id="select-script" >
+
   {% include 'linked-options' %}
   </script>
 </div>

@@ -1,8 +1,20 @@
-
+<div class="full">
+  {% if page.content contains "<featured" %}
+    {% assign src = page.content | split: 'src="' %}
+    {% assign src = src[1] | split: '"' | first | replace: '//cdn', 'http://cdn';; | replace: 'http:http://';;, 'https://';; | remove: 'http:' %}
+      <img width="100%" src="{{ src }}" alt="{{page.title}}" />
+  {% endif %}
+</div>
 <div class="container">
 	<div class="section center">
-		<h1 class="center">Not One More Initiative</h1>
-  	  	<p>In the wake of the shootings in Orlando, UC Santa Barbara, Newtown, Columbine, gun violence continues to affect families all around the world. Thank you to our partners Lise Evans, Julianne Moore, Michael Bloomberg and more.</p>
+		<h1 class="center">Not One More</h1>
+  	  	<p><br/>93 Americans are killed every day with guns.<br/><br/>
+
+In the wake of the shootings in Orlando, UC Santa Barbara, Newtown and Columbine, Donna Karan and Lise Evans launched Urban Zen’s Not One More initiative to raise awareness for gun-control reform.
+93 Americans are killed every day with guns.<br/><br/>
+
+In the wake of the shootings in Orlando, UC Santa Barbara, Newtown and Columbine, Donna Karan and Lise Evans launched Urban Zen’s Not One More initiative to raise awareness for gun-control reform.
+</p>
   	</div>
 	<div class="mobile_hidden">
 		<img src="{{ 'NOM_D_Banner_V2.jpg' | asset_url | split:'?' | first }}" width="100%"  alt="Not One More Banner" style="display:block;" />
@@ -10,42 +22,24 @@
 	<div class="desktop_hidden">
 		<img src="{{ 'NOM_collage2.jpg' | asset_url | split:'?' | first }}" width="100%"  alt="Not One More" style="display:block;" />
 	</div>
-	<div class="slideshow">
-	<div class="section clearfix mobile_center" id="purchase-bracelet">
+	 <div class="section clearfix mobile_center" id="purchase-bracelet">
+   <h2 class="center">Not One More Bracelet</h2><br/>
 		<div class="half left">
-			<h3>Not One More Bracelet</h3>
-			<p>Three words,"Not One More," a rallying cry by Richard Martinez, father of 20-year-old Christopher Michaels-Martinez who was shot and killed at UC Santa Barbara, inspired the one-of-a-kind bracelet we’ve developed to support Everytown for Gun Safety.</p>
-			<div class="mobile_hidden">
-   	  		<p>Your support gives back to Everytown's efforts to achieve common sense reforms that will prevent gun violence and save lives. </p>
 			
-				<p class="p2 price">$30.00</p>
-				<a href="/collections/not-one-more" class="cta-button nom"><span>Purchase</span></a>
-				<br>
-				<br>
-			</div>
+			<p>with the purchase of this leather wrap stamped with the words “Not One More,” you support our commitment to end gun violence and build safer communities. Bracelet is handcrafted in Haiti with 100% of the net proceeds from each bracelet sale goes to Everytown for Gun Safety, an advocate for the passage of gun safety measures.</p>
 		</div>
 		<div class="half right">
-			<div class="simpleslider">
-			<ul class="slides">
-			<li class=""><img width="480" height="360" src="{{ 'NOM_Bracelet_large.jpg' | asset_url | split:'?' | first }}" alt="Not One More Bracelet" /></li>
-	  			  <li class=""><img width="480" height="360" src="{{ 'NOM_Purchase_Slideshow_Double_Brown_large.jpg' | asset_url | split:'?' | first}}" alt="Not One More Event" /></li>
-	  			  <li class=""><img width="480" height="360" src="{{ 'NOM_Purchase_Slideshow_Single_Black_large.jpg' | asset_url | split:'?' | first}}" alt="Not One More Event" /></li>
-	  			  <li class=""><img width="480" height="360" src="{{ 'NOM_Purchase_Slideshow_Single_Brown_large.jpg' | asset_url | split:'?' | first}}" alt="Not One More Event" /></li>
-	  	  </ul>
+			{% assign products = collections.['not-one-more'].products %}
+      
+      {% include 'product-loop' %}
 	  </div>
-			<div class="desktop_hidden left">
-				<br>
-				<p>Your support gives back to Everytown's efforts to achieve common sense reforms that will prevent gun violence and save lives.</p>
-				<p>Explore the full collection.</p>
-				<p class="p2 price">$30.00</p>
-				<a href="/collections/not-one-more" class="cta-button nom"><span>Purchase</span></a>
-			</div>
-		</div>
-	</div>
+  </div>  
   <div class="section center">
-	<h2>Act: Take a picture wearing the Not One More bracelet, share it on your Instagram and tag</h2>
-	<ul class="hashtags"><li>#DisarmHate</li><li>#NotOneMore</li><li>@Everytown</li><li>@UrbanZen</li></ul>
-		<p >3 Million+ have joined the movement</p>
+  <h2>Share And Get Involved</h2>
+	<p><br/>Purchase a bracelet. Take a picture wearing the Not One More bracelet. Share it on your Instagram and tag<br/>
+  #DisarmHate #NotOneMore @Everytown @UrbanZen
+ 
+  </p>
   </div>
   <div class="section" id="nom-people">
       <div class="four columns dknom alpha thumbnail ">
