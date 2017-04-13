@@ -14,6 +14,7 @@ Description: Shopify Theme
 @font-face {font-family: 'HelveticaNeueLTStd-Md';src: url('320519_5_0.eot');src: url('320519_5_0.eot?#iefix') format('embedded-opentype'),url('320519_5_0.woff2') format('woff2'),url('320519_5_0.woff') format('woff'),url('320519_5_0.ttf') format('truetype'),url('320519_5_0.svg#wf') format('svg');}
 @font-face {font-family: 'icomoon';src: url('icomoon.eot?w384qd');src: url('icomoon.eot?w384qd#iefix') format('embedded-opentype'),url('icomoon.ttf?w384qd') format('truetype'),url('icomoon.woff?w384qd') format('woff'),url('icomoon.svg?w384qd#icomoon') format('svg');font-weight: normal;font-style: normal;}
 
+body{background:#000;}
 
 [class^="icon-"], [class*=" icon-"],.icon {
   font-family: 'icomoon' !important;
@@ -2294,6 +2295,7 @@ main .product{padding:0 30px;box-sizing:border-box;@media all and (max-width: 10
 	height: 100%;
 	margin: 0;
   background-color: #000;
+  @media all and (max-width: 1023px) {position: relative;height:100vh;margin-top: -100px;}
 }
 
 
@@ -2984,6 +2986,9 @@ header .logo{
     position: fixed;
     width: auto;
     height: 100%;
+    -webkit-overflow-scrolling: touch;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
 
@@ -3086,7 +3091,7 @@ header .logo{
 		margin: 0 auto;
 		float: none;
 		text-align: center;
-		padding:5px 0;
+		padding:0;
 		line-height:0;
 		color:#f5f1e1;
 
@@ -3831,3 +3836,67 @@ input[disabled]{pointer-events: none;}
 
 .page-movement-black .container{margin-top: 0;}
 
+.modal .product_name{
+  margin-top: 25px;
+}
+
+.sponsors{
+  background: #fff;
+}
+
+.pull-left{
+  float: left;
+}
+
+.supporters .one-half{
+  position: relative;
+}
+.supporters .text{
+  padding:15%;
+ z-index: 9;
+}
+.supporters .opacity{
+  opacity: 0.3;
+  background:#000;
+  width:100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+.supporters .text.bold{color:#fff;padding:15px;line-height:32px;text-align:center;font-size: 16px;font-family: 'HelveticaNeueLTStd-BdEx', 'Helvetica Neue Bold Extended', Helvetica, Arial, sans-serif;}
+.supporters .toggle span{display: block;}
+.toggle{opacity: 0;}
+.toggle-bg {opacity:0;display:block;background:#000;height: 100%;width: 100%;position: absolute;top: 0;left: 0;}
+
+.absolute-scroll.top{
+  position: absolute;
+    top: 50px;
+    width: 100%;
+    z-index: 1;
+}
+.absolute-scroll.bottom{
+  top: 75%;
+}
+
+.vjs-default-skin .vjs-big-play-button
+{
+top: 50%;
+left: 50%;
+margin: -4em auto auto -6em;
+}
+.player .controls .play.rounded-box{
+  position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate3d(-50%, -700%, 0) translateZ(0px) scale(1, 1) !important;
+}
+
+.page-movement-black .productSortItem{
+  @media only screen and (max-width: 1023px){display: none;}
+}
+
+.page-movement-black .productSortItem:first-child{
+  @media only screen and (max-width: 1023px){display: block;width:100%;} 
+}
