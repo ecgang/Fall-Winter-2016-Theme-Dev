@@ -3051,7 +3051,9 @@ window.bioEp = {
 		});
 	}
 }
-$("#link").click(function() {
+$("#link").click(function(e) {
+	console.log('clicked');
+	e.preventDefault();
 	   scrollToAnchor('jump-to');
 	});
 

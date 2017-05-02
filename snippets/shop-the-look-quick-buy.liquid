@@ -148,6 +148,7 @@
 			$(this).children(".warning").text("Please select a size");
 		});       
 		$(document).on('click','.quick_shop',function(event) {
+			 
 			$('body').addClass('overlay-open');
 			$("input[type=text], textarea").val("");
 			if($('.modal').is('[data-lookbook="lookbook-1"]')){	
@@ -460,6 +461,58 @@
 			else if($('.modal').is('[data-lookbook="lookbook-37"]')){
 				$(".quick_uniq[color^='Black Signaturejersey'][title^='Faux Wrap And Tie Skirt']").addClass('active'); 
 				$(".quick_uniq[color^='Black Signaturejersey'][title^='Asymmetric Scarf Top']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-39"]')){
+				$(".quick_uniq[color^='Raw Indigo Cottonpoplin'][title^='Utilitarian Smock']").addClass('active'); 
+				$(".quick_uniq[color^='Raw Indigo Cottonpoplin'][title^='Pleated Pull On Poplin Pant']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-40"]')){
+				$(".quick_uniq[color^='Black Signaturejersey'][title^='Flare Tank Top']").addClass('active'); 
+				$(".quick_uniq[color^='Raw Indigo Cottonpoplin'][title^='Crushed Pleated Skirt']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-41"]')){
+				$(".quick_uniq[color^='Brick Red Cottonpoplin'][title^='Utilitarian Long Smock']").addClass('active'); 
+				$(".quick_uniq[color^='Black Cottonpoplin'][title^='Pleated Pull On Poplin Pant']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-42"]')){
+				$(".quick_uniq[color^='Paperbag Cottonpoplin'][title^='Wrap And Tie Poncho']").addClass('active'); 
+				$(".quick_uniq[color^='Paperbag Cottonpoplin'][title^='Sleeveless Wrap & Tie Shirt dress']").addClass('active');
+				$(".quick_uniq[color^='Black Napasoft'][title^='Leather Wrapped Prayer Necklace']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-43"]')){
+				$(".quick_uniq[color^='Paperbag Cottonpoplin'][title^='Utiltarian Jumpsuit']").addClass('active'); 
+				$(".quick_uniq[color^='Black Napasoft'][title^='Leather Wrapped Prayer Necklace']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-44"]')){
+				$(".quick_uniq[color^='Black Cottonpoplin'][title^='Big Shirt']").addClass('active'); 
+				$(".quick_uniq[color^='Paperbag Stretchcanvas'][title^='Signature Canvas Skinny Pants']").addClass('active'); 
+				$(".quick_uniq[color^='Black Napasoft'][title^='Leather Wrapped Prayer Necklace']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-45"]')){
+				$(".quick_uniq[color^='White Cottonpoplin'][title^='Big Shirt']").addClass('active'); 
+				$(".quick_uniq[color^='Raw Indigo Cottonpoplin'][title^='Crushed Pleated Skirt']").addClass('active');
+				$(".quick_uniq[color^='Black Cottonpoplin'][title^='Wrap And Tie Poncho']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-46"]')){
+				$(".quick_uniq[color^='Black Cottonpoplin'][title^='Pleated Pull On Poplin Pant']").addClass('active'); 
+				$(".quick_uniq[color^='White Cottonpoplin'][title^='Belted Bib Front Shirt']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-47"]')){
+				$(".quick_uniq[color^='White Cottonpoplin'][title^='Wrap & Tie Long Sleeve Shirt Dress']").addClass('active'); 
+				$(".quick_uniq[color^='Black Cottonpoplin'][title^='Pleated Pull On Poplin Pant']").addClass('active'); 
+				$(".quick_uniq[color^='Black Napasoft'][title^='Leather Wrapped Prayer Necklace']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-48"]')){
+				$(".quick_uniq[color^='Black Cottonpoplin'][title^='Pleated Pull On Poplin Pant']").addClass('active'); 
+				$(".quick_uniq[color^='White Calligraphicartworkemb'][title^='Kaftan']").addClass('active');
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-49"]')){
+				$(".quick_uniq[color^='Black Fringedbasketembroidery'][title^='Black Ribbon Kaftan']").addClass('active'); 
+				
+			}
+			else if($('.modal').is('[data-lookbook="lookbook-50"]')){
+				$(".quick_uniq[color^='Black Cottonpoplin'][title^='Pleated Pull On Poplin Pant']").addClass('active'); 
+				$(".quick_uniq[color^='Black Noveltyembroidery'][title^='Short Hand Looped Kaftan']").addClass('active');
 			}
 
 		});

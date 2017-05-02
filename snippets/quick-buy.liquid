@@ -99,7 +99,7 @@
 		{% else %}		
 		{% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
 		<span class="empty disabled-container">
-		<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }} " data-label={{ add_to_cart_label | json }} disabled="disabled" />
+		<input type="submit" id="addcart" name="add" value="add to cart" class="action_button add_to_cart add-to-bag cta-button pull-right {{variant.id}} {{ product.id }} {% if product.variants.size == 1 or product.first_available_variant.option2 == 'O/S'  %} no-choices{% endif %}" data-label={{ add_to_cart_label | json }} disabled="disabled" />
 		</span>
 		{% endif %}
 		
@@ -108,6 +108,10 @@
 </div>
 <div class="opacity-bg"></div>
 <script type="text/javascript">
+/*$(document).ready(function() {
+	$('.action_button.no-choices').removeProp('disabled');
+	$('.action_button.no-choices').parent().removeClass('disabled-container');
+});*/
  $(document).on('click','.disabled-container', function(e){
     e.preventDefault();
       $(this).children(".warning").text("Please select a size");

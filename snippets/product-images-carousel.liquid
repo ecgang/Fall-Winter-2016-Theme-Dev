@@ -2,7 +2,7 @@
 <div id="slider" class="{% unless product.tags contains 'no-variant-images' %}carousel-slider{% endunless %} flexslider product_slider">
   <ul class="slides">
     {% for image in product.images %}
-      <li class="{{image.alt | split: ' ' | first }}" data-thumb="{{ image.src | product_img_url: '1024x1024' | split:'?' | first }}" data-title="{% if image.alt contains 'youtube' or image.alt contains 'vimeo' %}{{ product.title }}{% else %}{{ image.alt | escape }}{% endif %}">
+      <li class="{{image.alt | split: ' ' | first }}" data-product-title="{{product.title}}" data-thumb="{{ image.src | product_img_url: '1024x1024' | split:'?' | first }}" data-title="{% if image.alt contains 'youtube' or image.alt contains 'vimeo' %}{{ product.title }}{% else %}{{ image.alt | escape }}{% endif %}">
         {% if image.alt contains 'youtube' or image.alt contains 'vimeo' %}
           {% assign src = image.alt | split: 'src="' | last %}
           {% assign src = src[1] | split: '"' | first %}
