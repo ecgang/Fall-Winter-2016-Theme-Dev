@@ -2,8 +2,10 @@
 	<div class="header-title">
 		<h1>Silk Road Collection</h1>
 		<p>click caption to shop</p>
+		{% comment %}
 		<br/>
 		<a id="link" href="#" class="purchase cta-button dark" onclick="javascript:window.location.href='#summer-looks'">explore summer looks</a>
+		{% endcomment %}
 	</div>
 	<div id="LoadingImage" class="text centered" style="display: none;position:fixed;z-index: 9999;">
   		<img src="{{ 'loader.gif' | asset_url | split:'?' | first }}" />
