@@ -2,10 +2,10 @@
 	<div class="header-title">
 		<h1>Silk Road Collection</h1>
 		<p>click caption to shop</p>
-		{% comment %}
+		
 		<br/>
 		<a id="link" href="#" class="purchase cta-button dark" onclick="javascript:window.location.href='#summer-looks'">explore summer looks</a>
-		{% endcomment %}
+		
 	</div>
 	<div id="LoadingImage" class="text centered" style="display: none;position:fixed;z-index: 9999;">
   		<img src="{{ 'loader.gif' | asset_url | split:'?' | first }}" />
@@ -984,10 +984,10 @@
 					</div>
 				</div>
 			</div>
-			{% comment %}
+			
 			<div class="image-row">
 				<div class="four columns mobile-single alpha inline thumbnail" itemprop="itemListElement" itemscope="" itemtype="http://schema.org/Product">
-					<div class="flexwrap" style="background:#000;height:100%;min-height: 300px;">
+					<div class="flexwrap summer-looks" style="">
 						<span class="text centered light"><h1>SUMMER<br/>LOOKS</h1></span>
 						<a name="jump-to" id="summer-looks" href="#summer-looks"> </a>
 					</div>
@@ -1332,7 +1332,7 @@
 					</div>
 				</div>
 			</div>
-			{% endcomment %}
+			
 		</div>		
 	</div>
 </div>
