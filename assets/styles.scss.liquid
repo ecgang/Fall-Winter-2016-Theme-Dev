@@ -161,7 +161,7 @@ body.modal-open{
   .normalcase{text-transform: none;}
   h1, h2 ,h3 ,h4 ,h5 ,h6, p{text-rendering: optimizeLegibility;}
 
-  h1{
+  h1,h1 span{
     /* Main Content Header Title */
     font-family: 'HelveticaNeueLTStd-LtEx', 'Helvetica Neue Light Extended', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 30px;
@@ -233,6 +233,8 @@ body.modal-open{
     letter-spacing:.08333em;
   @media (max-width: 1023px){padding:0;}
   }
+
+
   
   .italic{
     font-style: italic;
@@ -774,7 +776,8 @@ div.is-absolute, html.mm-bottom.mm-opened.mm-opening div.is-absolute {
     font-size: 12px;
   }
   .thumbnail img {
-
+backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
     opacity: 0;
     transition: opacity .3s ease-in;
   }
@@ -2053,7 +2056,7 @@ hr.hr--small{width: 120px;text-align: center;float: none;display: inline-block;}
 .nav a.icon-cart:before{font: normal normal normal 14px/1 FontAwesome !important;padding-right:4px;}
 .soldOut{color:#aaa;}
 li.success_message,li.success_message::after{border:0 !important;padding-left:20px;}
-.thumbnail:hover img{opacity:0.7 !important;@media all and (max-width: 1023px) {opacity:1 !important;}}
+.thumbnail:hover img{opacity:0.5 !important;@media all and (max-width: 1023px) {opacity:1 !important;}}
 .productSortItem.thumbnail:hover img,[class*='page-lookbook-'] .thumbnail:hover img{opacity:1 !important;@media all and (max-width: 1023px) {opacity:1 !important;}}
 
 /* #Newsletter Popup Styles
@@ -2720,19 +2723,18 @@ li.item.hpslide1.fadeIn{
 
 
 
-.hpslide1{background-image:url({{ 'UZR_d_jumpsuit_1a.jpg' | asset_url | split:'?' | first }});}
-/*.hpslide2{background-image:url({{ 'UZR_ipad_HP_2_mood.jpg' | asset_url | split:'?' | first }});}*/
+
+.hpslide1{background-image:url({{ 'd_HP_1c_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}
+.hpslide2{background-color: #000; background-image:url({{ 'UZR_d_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}
 .hpslide3{background-image:url({{ 'UZR_d_HP_3_chess.jpg' | asset_url | split:'?' | first }});}
-.hpslide4{background-image:url({{ 'UZR_d_HP_4_b_fan2.jpg' | asset_url | split:'?' | first }});}
+.hpslide4{background-image:url({{ 'UZR_d_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}
 .hpslide5{background-image:url({{ 'UZR_d_HP_5_b_apple.jpg' | asset_url | split:'?' | first }});}
 
 
-/*.hpslide5{background-image:url({{ 'UZ_HP_Slider_4_D_2016_10_11.jpg' | asset_url | split:'?' | first }});}*/
-/*.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_SS17_meditation_paintstroke.jpg' | asset_url | split:'?' | first }});}}*/
-.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_1_b_summer2.jpg' | asset_url | split:'?' | first }});}}
-.slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_2_mood.jpg' | asset_url | split:'?' | first }});}}
+.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_1d_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}}
+.slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}}
 .slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_3_chess_a.jpg' | asset_url | split:'?' | first }});}}
-.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_b_fan_1.jpg' | asset_url | split:'?' | first }});}}
+.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}}
 .slide5{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_5_apple.jpg' | asset_url | split:'?' | first }});}}
 
 
@@ -2745,31 +2747,26 @@ li.item.hpslide1.fadeIn{
 .hpslide6a{background-image:url({{ 'campaign_05.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'M_Campaign_Slider_06.jpg' | asset_url | split:'?' | first }});}}
 .hpslide7a{background-image:url({{ 'campaign_06.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'M_Campaign_Slider_07.jpg' | asset_url | split:'?' | first }});}}
 .hpslide8a{background-image:url({{ 'campaign_07.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'M_Campaign_Slider_08.jpg' | asset_url | split:'?' | first }});}}
-
-
-
-
 .hpslide1.ipad{background-image:url({{ 'd_UZR_HP_02.jpg' | asset_url | split:'?' | first }});}
 .hpslide2.ipad{background-image:url({{ 'd_UZR_HP_03.jpg' | asset_url | split:'?' | first }});}
 .hpslide3.ipad{background-image:url({{ 'd_UZR_HP_04.jpg' | asset_url | split:'?' | first }});}
 .hpslide4.ipad{background-image:url({{ 'i_UZR_HP_04.jpg' | asset_url | split:'?' | first }});}
 
-
-
-
-
 /* Philanthropy Page */
 .page-philanthropy-black .section,.page-our-story-black .section{height:100vh;background-size:cover;background-position:50%;position:relative;background-repeat:no-repeat;color:#f5f1e1;}
-.page-philanthropy-black .section.one{background-image:url({{ 'd_philanthropy_00.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_philanthropy_01.jpg' | asset_url | split:'?' | first }});}}
-.page-philanthropy-black .section.two{background-image:url({{ 'dm_philanthropy_03.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_philanthropy_02.jpg' | asset_url | split:'?' | first }});}}
-.page-philanthropy-black .section.three{background-image:url({{ 'dm_philanthropy_02.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_philanthropy_03.jpg' | asset_url | split:'?' | first }});}}
-.page-philanthropy-black .section.five{background-image:url({{ 'dm_philanthropy_04.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_philanthropy_04.jpg' | asset_url | split:'?' | first }});}}
-.page-philanthropy-black .section.four{background-image:url({{ 'dm_philanthropy_05.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_philanthropy_05.jpg' | asset_url | split:'?' | first }});}}
-.page-our-story-black .section.two{background-image:url({{ 'dm_ourstory_02.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_02.jpg' | asset_url | split:'?' | first }});}}
-.page-our-story-black .section.three{background-image:url({{ 'dm_ourstory_03.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_01.jpg' | asset_url | split:'?' | first }});}}
-.page-our-story-black .section.four{background-image:url({{ 'dm_ourstory_05.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_05.jpg' | asset_url | split:'?' | first }});}}
-.page-our-story-black .section.five{background-image:url({{ 'dm_ourstory_04.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_03_darker.jpg' | asset_url | split:'?' | first }});}}
-.page-our-story-black .section.six{background-image:url({{ 'dm_ourstory_06.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_ourstory_04.jpg' | asset_url | split:'?' | first }});}}
+.page-our-story-black .section.one{background-image:url({{ 'About_Us_Hero_05_17.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_Us_Hero.jpg' | asset_url | split:'?' | first }});}}
+.page-our-story-black .section.founder{background-image:url({{ 'our-founder-bg.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_Us_DKMain.jpg' | asset_url | split:'?' | first }});}}
+
+.page-our-story-black main .container{
+  padding: 50px;
+  margin: 0;
+  max-width: none;
+   @media only screen and (max-width: 1023px) {padding: 50px 10px;}
+}
+
+.page-our-story-black .thumbnail:hover img{
+  opacity:0.5 !important;
+  @media all and (max-width: 1023px) {opacity:0.5 !important;}}
 
 /*.page-contact-black {background-image:url({{ 'client-services.jpg' | asset_url | split:'?' | first}});background-size:cover;}*/
 
@@ -3311,7 +3308,7 @@ header .logo{
   @media only screen and (max-width: 1023px){position:relative;width:100%;}
 }
 
-.index .slides,.index .slides li{width:100%;height:100vh;background-size:cover;opacity:1;}
+.index .slides,.index .slides li{width:100%;height:100vh;background-size:cover;opacity:1;background-color: #000 !important;}
 .index .flex-control-nav li a.flex-active,.black-bg .flex-control-nav li a.flex-active{background:#f5f1e1;}
 .index .flex-control-nav{
   bottom: 30px;
@@ -3531,7 +3528,10 @@ header .logo{
     transform: none;
   }
 }
-.modal.active{display:block;}
+.modal.active{
+  display: flex;
+  align-items: center;
+}
 
 .overlay,.modal_overlay{
   position:fixed;
@@ -3930,7 +3930,11 @@ input[disabled]{pointer-events: none;}
     z-index: 1;
 }
 .absolute-scroll.bottom{
-  top: 75%;
+  bottom: 10%;
+  top: inherit;
+  @media only screen and (max-width: 1023px){
+    bottom: 25%;
+  }
 }
 
 .vjs-default-skin .vjs-big-play-button
@@ -4102,11 +4106,15 @@ margin: -4em auto auto -6em;
 
 .hover-text .relative{
   background: #000;
+  width: 99%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .hover-text .text{
   padding: 50px;
   display: none;
+  font-family: 'HelveticaNeueLTStd-Md','Helvetica Neue Medium', Helvetica, Arial, sans-serif;
 }
 
 .hover-text:hover .text{

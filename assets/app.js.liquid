@@ -3062,3 +3062,36 @@ $("#link").click(function(e) {
 
 
 $('.lightbox').fancybox();
+$(document).ready(function(){
+			function scrollToAnchor(aid){
+				var aTag = $("a[name='"+ aid +"']");
+				$('html,body').animate({scrollTop: aTag.offset().top -50},'slow');
+			}
+			$("#link").click(function() {
+				scrollToAnchor('jump-to');
+			});
+		  //get the welcome msg element
+		  var $all_msg = $('.rotate');
+		  //get a list of letters from the welcome text
+		  var $wordList = $('.rotate').text().split("");
+		  //clear the welcome text msg
+		  $('.rotate').text("");
+		  //loop through the letters in the $wordList array
+		  $.each($wordList, function(idx, elem) {
+		    //create a span for the letter and set opacity to 0
+		    var newEL = $("<span/>").text(elem).css({
+		      opacity: 0
+		    });
+		    //append it to the welcome message
+		    newEL.appendTo($all_msg);
+		    //set the delay on the animation for this element
+		    newEL.delay(idx * 70);
+		    //animate the opacity back to full 1
+		    newEL.animate({
+		      opacity: 1
+		    }, 1100);
+
+		});
+
+			
+		});
