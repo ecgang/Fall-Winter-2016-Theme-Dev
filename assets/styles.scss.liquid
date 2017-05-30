@@ -678,6 +678,7 @@ table { margin-bottom: 20px;}
 .mobile_center { @media only screen and (max-width: 1023px){text-align: center; }}
 .relative { position: relative; }
 .align_right { text-align:right; @media only screen and (max-width: 1023px){text-align: center; }}
+.align_center{text-align: center;}
 .right_mobile{@media only screen and (max-width: 1023px){text-align: right; }}
 .align_left { text-align: left; @media only screen and (max-width: 1023px){text-align: center; }}
 p.warning { text-align: center; /*font-weight: bold;*/ padding-top: 10px; }
@@ -1962,6 +1963,9 @@ hr.hr--small{width: 120px;text-align: center;float: none;display: inline-block;}
 .three-quarters{width:75%;float:left;position:relative;box-sizing:border-box;@media all and (max-width: 1023px) {width:100%;}}
 .search .one-quarter{display:inline-block;float:none;text-align:center;padding:0 0 2% 2%;@media all and (max-width: 1023px) {width:50%;}}
 .one-half{width:50%;display:inline-block;vertical-align:middle;}
+.one-half.left,.one-half.right{
+  width: 48%;float: none;
+}
 .one-third{ width:33.333%;float:left;position:relative;box-sizing:border-box;@media all and (max-width: 1023px) {width:100%;}}
 .one-third.thumbnail{padding: 0 10px;margin-bottom: 30px;}
 .one-third.thumbnail .cta-button{width: auto;
@@ -2206,6 +2210,11 @@ img.hidden,.shop-alt img.display_look.collection_hidden,[class^='page-lookbook-'
   margin:100px auto 30px auto;
   margin-top:100px;
   @media (max-width: 1023px){margin-top:40px;padding:0;}
+}
+
+.container.inline-block{
+  display: inline-block;
+  vertical-align: middle;
 }
 .container.no-vpadding{
   margin-top: 0;
@@ -2724,19 +2733,19 @@ li.item.hpslide1.fadeIn{
 
 
 
-.hpslide1{background-image:url({{ 'd_HP_1c_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}
-.hpslide2{background-color: #000; background-image:url({{ 'UZR_d_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}
-.hpslide3{background-image:url({{ 'UZR_d_HP_3_chess.jpg' | asset_url | split:'?' | first }});}
-.hpslide4{background-image:url({{ 'UZR_d_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}
-.hpslide5{background-image:url({{ 'UZR_d_HP_5_b_apple.jpg' | asset_url | split:'?' | first }});}
+
+.hpslide1{background-color: #000; background-image:url({{ 'UZR_d_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}
+.hpslide2{background-image:url({{ 'UZR_d_HP_3_chess.jpg' | asset_url | split:'?' | first }});}
+.hpslide3{background-image:url({{ 'UZR_d_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}
+.hpslide4{background-image:url({{ 'UZR_d_HP_5_b_apple.jpg' | asset_url | split:'?' | first }});}
+.hpslide5{background-image:url({{ 'd_HP_1c_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}
 
 
-.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_1d_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}}
-.slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}}
-.slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_3_chess_a.jpg' | asset_url | split:'?' | first }});}}
-.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}}
-.slide5{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_5_apple.jpg' | asset_url | split:'?' | first }});}}
-
+.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}}
+.slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_3_chess_a.jpg' | asset_url | split:'?' | first }});}}
+.slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}}
+.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_5_apple.jpg' | asset_url | split:'?' | first }});}}
+.slide5{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_1d_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}}
 
 
 .hpslide1a{background-image:url({{ 'D_Campaign_Slider_1800x1150_1.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'M_Campaign_Slider_01.jpg' | asset_url | split:'?' | first }});}}
@@ -4136,4 +4145,9 @@ margin: -4em auto auto -6em;
 
   }
 
+}
+.columns.centered{
+    margin: 0 auto;
+    display: block;
+    max-width: 50%;
 }

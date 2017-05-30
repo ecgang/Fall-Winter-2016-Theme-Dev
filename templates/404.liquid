@@ -1,10 +1,9 @@
-<div class="section sixteen columns clearfix collection_nav">
-  <h1 class="center">{{ 'general.404.title' | t }}</h1>
-</div>
-
 <div class="sixteen columns">
+  <div class="header-title">
+    <h1 class="center">{{ 'general.404.title' | t }}</h1>
+  </div>
   <div class="section clearfix">
-    <p class="quote">
+    <p class="quote align_center">
       {{ 'general.404.subtext' | t }}
     </p>
   </div>
@@ -16,7 +15,7 @@
       {{ 'general.404.continue_shopping_html' | t }}
     </p>
   </div>    
-  <div class="six columns offset-by-five">
+  <div class="six columns centered">
     <form class="search" action="/search">
       <input type="text" name="q" class="search_box" placeholder="{{ 'general.search.placeholder' | t }}"  value="{{ search.terms }}" />
     </form>
