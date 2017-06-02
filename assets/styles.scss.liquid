@@ -305,8 +305,8 @@ b{
   .cta-button:hover .text{color:#f5f1e1;}
   .cta-button .coming-soon{text-transform: uppercase;}
   .cta-button .subtext{font-size: 10px;margin-top: -5px;display: block;}
-  .black-bg .cta-button{
-    color:#f5f1e1;
+  .black-bg .cta-button,.page-our-story-black .cta-button{
+    color:#f5f1e1 !important;
     border-color: #f5f1e1;
   }
   .index .cta-button{margin-top:15px;color:#f5f1e1;}
@@ -2726,25 +2726,42 @@ li.item.hpslide1.fadeIn{
 #splash .text{z-index:9999;color:#f5f1e1;font-size:4rem;display:none;}
 #splash,#introVid{@media only screen and (max-width: 1023px) {display:none;}}
 .index .section{height:100vh;position: relative;background-size: cover;background-color:#000;@media only screen and (max-width: 1023px) {background-position-y:50px;}}
-.simpleHomeSlider{background-color:#000;}
+.simpleHomeSlider,.ourStorySlider{background-color:#000;}
 .text.ipad{display: none;}
 
 
+.ourStorySlider .item{background-size: cover;height: 100vh;}
+
+.ourStorySlider .flex-direction-nav{
+      display: block;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    z-index: 9999;
+    color: #fff !important;
+}
+.ourStorySlider .flex-direction-nav .flex-nav-prev:before,.ourStorySlider .flex-direction-nav .flex-nav-next:after{
+    border-color: #fff !important;
+}
+
+.story-slide-1{background-image:url({{ 'd_About_apparel_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_Us_Hero_new_smaller.jpg' | asset_url | split:'?' | first }});}}
+.story-slide-2{background-image:url({{ 'd_About_DK-artisan_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_DK-artisan_new_smaller.jpg' | asset_url | split:'?' | first }});}}
+.story-slide-3{background-image:url({{ 'd_About_fan_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_fan_new_smaller.jpg' | asset_url | split:'?' | first }});}}
+.story-slide-4{background-image:url({{ 'd_About_furniture_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_furniture_new_smaller.jpg' | asset_url | split:'?' | first }});}}
+.story-slide-5{background-image:url({{ 'd_About_NYC-Store_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_NYC-Store_new_smaller.jpg' | asset_url | split:'?' | first }});}}
 
 
-
-
-.hpslide1{background-color: #000; background-image:url({{ 'UZR_d_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}
-.hpslide2{background-image:url({{ 'UZR_d_HP_3_chess.jpg' | asset_url | split:'?' | first }});}
-.hpslide3{background-image:url({{ 'UZR_d_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}
-.hpslide4{background-image:url({{ 'UZR_d_HP_5_b_apple.jpg' | asset_url | split:'?' | first }});}
+.hpslide1{background-image:url({{ 'UZR_d_HP_5_b_apple.jpg' | asset_url | split:'?' | first }});}
+.hpslide2{background-color: #000; background-image:url({{ 'UZR_d_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}
+.hpslide3{background-color: #000; background-image:url({{ 'd_HP_3_new_new_2.jpg' | asset_url | split:'?' | first }});}
+.hpslide4{background-image:url({{ 'UZR_d_HP_4_fan_new_new_2.jpg' | asset_url | split:'?' | first }});}
 .hpslide5{background-image:url({{ 'd_HP_1c_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}
 
 
-.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}}
-.slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_3_chess_a.jpg' | asset_url | split:'?' | first }});}}
-.slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_sag_harbor.jpg' | asset_url | split:'?' | first }});}}
-.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_5_apple.jpg' | asset_url | split:'?' | first }});}}
+.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_5_apple.jpg' | asset_url | split:'?' | first }});}}
+.slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}}
+.slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_3_new_new_2.jpg' | asset_url | split:'?' | first }});}}
+.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_fan_new_new_2.jpg' | asset_url | split:'?' | first }});}}
 .slide5{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_1d_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}}
 
 
@@ -2768,16 +2785,42 @@ li.item.hpslide1.fadeIn{
 
 .page-haiti-fans .section.one{background-image:url({{ 'UZR_d_HP_fan.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_fan.jpg' | asset_url | split:'?' | first }});}}
 
-
-
+.fan-bg{
+  background-size: cover;
+  position: relative;
+ 
+}
+.fan-bg div{
+  position: relative;
+  z-index: 9999;
+}
 
 .page-our-story-black main .container,.page-haiti-fans main .container{
   padding: 50px;
   margin: 0;
+  background: #000;
   max-width: none;
-   @media only screen and (max-width: 1023px) {padding: 50px 10px;}
+  @media only screen and (max-width: 1023px) {
+    padding: 50px 10px;
+  }
 }
 
+.page-haiti-fans main .container.fan-bg:after{
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.3;
+
+  background:url({{ 'd_Fans---background.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_Fans---background.jpg' | asset_url | split:'?' | first }}) !important;} 
+}
+
+
+.page-haiti-fans .productSortItem .meta,.page-haiti-fans .productSortItem p{
+  color: #f5f1e1 !important;
+}
 .page-our-story-black .thumbnail:hover img{
   opacity:0.5 !important;
   @media all and (max-width: 1023px) {opacity:0.5 !important;}}
@@ -4151,3 +4194,4 @@ margin: -4em auto auto -6em;
     display: block;
     max-width: 50%;
 }
+

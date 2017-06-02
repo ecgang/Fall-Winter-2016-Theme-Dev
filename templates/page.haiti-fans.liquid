@@ -1,4 +1,4 @@
-		<section class="fp-section section one center">
+	<section class="fp-section section one center">
 		<div class="text text3">
 			<h1 class="light uppercase">Fans of Haiti</h1>
 		</div>
@@ -7,51 +7,50 @@
 		</div>
 	</section> 
 	<a name="jump-to" href="#"></a>
-	<div class="container">
+	<div class="container fan-bg light">
 		<div class="sixteen center dark">
 			<h1 class="center uppercase">About the Fans</h1>
 			
 			<p><br/>Owned by Magalie Dresse, Haiti-based Caribbean Craft creates these paper mache fans utilizing a team of talented artisans and painters. While the fan itself is beautiful as a piece of art, it's even more impressive in how it helps support a growing and increasingly more stable artists' community in Haiti, with 100% of its proceeds going toward our Foundation.</p>
 		</div>
 		<br/><br/>
-		<div class="one-third thumbnail hover-text">		
+		<div class="one-third thumbnail hover-text">
 			<div class="relative">
 			<img src="{{ 'transparent.gif' | asset_url | split:'?' | first }}" data-src="{{ 'process_1.jpg' | asset_url | split:'?' | first }}" alt="Haiti Artisan Project" width="100%" />
 			<h4 class="text light normalcase">We are the original<br/>BUY NOW WEAR NOW Collection</h4>
 			</div>
-			<br/>
-			<h4 class="dark thin">Available<br>In-Season</h4><br/>
-			<a id="link" href="/pages/silk-road-collection" class="purchase cta-button dark">shop collection</a>
 		</div>
 		<div class="one-third thumbnail hover-text">
 			<div class="relative">
 			<img src="{{ 'transparent.gif' | asset_url | split:'?' | first }}" data-src="{{ 'process_2.jpg' | asset_url | split:'?' | first }}" alt="D.O.T" width="100%" />
 			<h4 class="text light normalcase">Our designs are made with intention, integrating old world techniques into modern designs</h4>
 			</div>
-			<br/>
-			<h4 class="dark thin">Inspired By<br>Global Artisans</h4><br/>
-			<a id="link" href="/collections/features/global-artisans" class="purchase cta-button dark">shop artisan designs</a>
 		</div>
 		<div class="one-third thumbnail hover-text">
 			<div class="relative">
 			<img src="{{ 'transparent.gif' | asset_url | split:'?' | first }}" data-src="{{ 'process_3.jpg' | asset_url | split:'?' | first }}" alt="Urban Zen Integrative Therapy Program" width="100%" />
 			<h4 class="text light normalcase">We are a marriage of philanthropy and commerce</h4>
 			</div>
-			<br/>
-			<h4 class="dark thin">Urban Zen<br>Foundation</h4><br/>
-			<a id="link" href="/pages/urban-zen-foundation" class="purchase cta-button dark">learn more</a>
 		</div>
+		<div class="black-background"></div>
 	</div>
-	<div class="container inline-block">
-		<div class="one-half left">
-			<img src="{{ 'process_3.jpg' | asset_url | split:'?' | first }}" alt="Urban Zen Integrative Therapy Program" width="100%" />
-		</div><div class="one-half right align_center">
+	<div class="container light inline-block">
+		<div class="align_center">
 			<h2>Get Your Fan</h2><br/><br/>
 			<h4 class="thin">$25.00</h4><br/><br/>
-			<a href="" class="purchase dark cta-button">shop</a>
+			
 		</div>
-	</div>
-	<div class="container center dark">
+		<div class="light">
+			{% assign products = collections.['fans-of-haiti-page'].products %}
+      		{% include 'product-loop' %}
+      		<br/><br/>
+      		<div class="align_center">
+      		<a href="" class="purchase cta-button">shop all fans</a>
+      		</div>
+		</div>
+	</div>	
+
+	<div class="container light center dark">
 	
 		<h1 class="uppercase">Share and Get Involved</h1>
 		<p>Post a selfie with your fan and show us how you are a "fan" of Haiti.<br/>#FansOfHaiti @UrbanZen @donnakaranthewoman<br/><br/>
@@ -84,4 +83,5 @@
           <div class="relative"><img width="50" height="50" src="{{ 'transparent.gif' | asset_url | split:'?' | first  }}" data-src="{{'follow_3a.jpg' | asset_url | split:'?' | first}}"><h4 class="text light normalcase">UZ LA</h4></div>
       </div>
 	</div>
+
 	</div>
