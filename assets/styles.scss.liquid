@@ -1112,7 +1112,7 @@ backface-visibility: hidden;
   
   footer .container{margin:0 auto;width:40%;float:none;padding: 50px 0;max-width:none;@media only screen and (max-width: 1023px){width:100% !important;}}
   
-  .index footer,#fullpage footer,[class*='foundation-'] footer,[class*='campaign-'] footer,[class*='scrolling'] footer,.article footer{padding-left:0;@media only screen and (max-width: 1023px){padding-left:20px;}}
+  .index footer,#fullpage footer,[class*='campaign-'] footer,[class*='scrolling'] footer,.article footer{padding-left:0;@media only screen and (max-width: 1023px){padding-left:20px;}}
   footer a:link{color:#f5f1e1;}
   footer .footer_menu .left{text-align:center;}
   footer .newsletter{width:85%;margin:0 auto;}
@@ -1823,7 +1823,7 @@ div.cloudzoom-ajax-loader {
   .hsContainer .right {
     padding-right: 20px !important;
   }
-  .index .section{position:relative;/*background-position-y: 50px !important;*/background-repeat:no-repeat;background-color:#000;background-size:cover;}
+  .index .section{position:relative;background-repeat:no-repeat;background-color:#000;background-size:cover;}
   .index #second.section{margin-top:-60px !important;}
 }
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -2725,7 +2725,7 @@ li.item.hpslide1.fadeIn{
 #splash img{display:none;}
 #splash .text{z-index:9999;color:#f5f1e1;font-size:4rem;display:none;}
 #splash,#introVid{@media only screen and (max-width: 1023px) {display:none;}}
-.index .section{height:100vh;position: relative;background-size: cover;background-color:#000;@media only screen and (max-width: 1023px) {background-position-y:50px;}}
+.index .section{height:100vh;position: relative;background-size: cover;background-color:#000;}
 .simpleHomeSlider,.ourStorySlider{background-color:#000;}
 .text.ipad{display: none;}
 
@@ -2751,18 +2751,20 @@ li.item.hpslide1.fadeIn{
 .story-slide-5{background-image:url({{ 'd_About_NYC-Store_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_NYC-Store_new_smaller.jpg' | asset_url | split:'?' | first }});}}
 
 
-.hpslide1{background-image:url({{ 'UZR_d_HP_5_b_apple.jpg' | asset_url | split:'?' | first }});}
+.hpslide1{background-image:url({{ 'UZR_d_HP_4_fan_new_new_2.jpg' | asset_url | split:'?' | first }});}
 .hpslide2{background-color: #000; background-image:url({{ 'UZR_d_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}
 .hpslide3{background-color: #000; background-image:url({{ 'd_HP_3_new_new_2.jpg' | asset_url | split:'?' | first }});}
-.hpslide4{background-image:url({{ 'UZR_d_HP_4_fan_new_new_2.jpg' | asset_url | split:'?' | first }});}
-.hpslide5{background-image:url({{ 'd_HP_1c_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}
+.hpslide4{background-image:url({{ 'd_HP_UZF_june.jpg' | asset_url | split:'?' | first }});}
 
 
-.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_5_apple.jpg' | asset_url | split:'?' | first }});}}
+
+
+.slide1{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_fan_new_new_2.jpg' | asset_url | split:'?' | first }});}}
 .slide2{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}}
 .slide3{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_3_new_new_2.jpg' | asset_url | split:'?' | first }});}}
-.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'UZR_m_HP_4_fan_new_new_2.jpg' | asset_url | split:'?' | first }});}}
-.slide5{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_1d_Donna-and-Rihanna.jpg' | asset_url | split:'?' | first }});}}
+.slide4{z-index:3;@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_UZF3.jpg' | asset_url | split:'?' | first }});}}
+
+
 
 
 .hpslide1a{background-image:url({{ 'D_Campaign_Slider_1800x1150_1.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'M_Campaign_Slider_01.jpg' | asset_url | split:'?' | first }});}}
@@ -2784,6 +2786,13 @@ li.item.hpslide1.fadeIn{
 .page-our-story-black .section.founder{background-image:url({{ 'our-founder-bg.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_Us_DKMain.jpg' | asset_url | split:'?' | first }});}}
 
 .page-haiti-fans .section.one{background-image:url({{ 'UZR_d_HP_fan.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_HP_fan.jpg' | asset_url | split:'?' | first }});}}
+
+.page-haiti-fans .productSortItem:nth-child(3){
+  display: none;
+  @media only screen and (max-width: 1023px) {
+    display: block;
+  }
+}
 
 .fan-bg{
   background-size: cover;
@@ -2812,7 +2821,7 @@ li.item.hpslide1.fadeIn{
   position: absolute;
   left: 0;
   top: 0;
-  opacity: 0.3;
+  opacity: 0.8;
 
   background:url({{ 'd_Fans---background.jpg' | asset_url | split:'?' | first}});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_Fans---background.jpg' | asset_url | split:'?' | first }}) !important;} 
 }
@@ -4171,6 +4180,8 @@ margin: -4em auto auto -6em;
 .hover-text .text{
   padding: 50px;
   display: none;
+  width: auto;
+  min-width: 100%;
   font-family: 'HelveticaNeueLTStd-Md','Helvetica Neue Medium', Helvetica, Arial, sans-serif;
 }
 
@@ -4195,3 +4206,10 @@ margin: -4em auto auto -6em;
     max-width: 50%;
 }
 
+.top-bottom-extra-padding{
+  padding: 100px 50px !important;
+}
+
+.fan-bg .black-background{
+  z-index: 999;
+}
