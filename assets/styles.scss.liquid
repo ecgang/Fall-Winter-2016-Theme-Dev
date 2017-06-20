@@ -278,6 +278,10 @@ b{
      color:#f5f1e1;
   }
 
+  .thin{
+    font-family: 'HelveticaNeueLTStd-Lt', 'Helvetica Neue Light ', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
   .cta-button{
     font-family: 'HelveticaNeueLTStd-Md','Helvetica Neue Medium', Helvetica, Arial, sans-serif;
       padding: 8px 20px;
@@ -309,6 +313,12 @@ b{
     color:#f5f1e1 !important;
     border-color: #f5f1e1;
   }
+
+  .cta-button.yellow{
+    background: #fdb913 !important;
+    color: #fff !important;
+  }
+
   .index .cta-button{margin-top:15px;color:#f5f1e1;}
   
   .cta-button:hover{
@@ -702,6 +712,9 @@ div.is-absolute, html.mm-bottom.mm-opened.mm-opening div.is-absolute {
   position:relative;
     padding: 30px 0;
     @media (max-width: 1023px){padding:15px;}
+  }
+  section.section{
+    position: relative;
   }
 
   .section.product_section.clearfix {
@@ -1110,7 +1123,7 @@ backface-visibility: hidden;
 ================================================== */
   footer{position:relative;z-index:99;background:#000;text-align:center;float:left;padding-left:200px;width:100%;color:#f5f1e1; box-sizing:border-box;@media only screen and (max-width: 1023px){width:100%;padding-left:0;padding:0 20px;}}
   
-  footer .container{margin:0 auto;width:40%;float:none;padding: 50px 0;max-width:none;@media only screen and (max-width: 1023px){width:100% !important;}}
+  footer .container{margin:0 auto !important;width:40%;float:none;padding: 50px 0;max-width:none;@media only screen and (max-width: 1023px){width:100% !important;}}
   
   .index footer,#fullpage footer,[class*='campaign-'] footer,[class*='scrolling'] footer,.article footer{padding-left:0;@media only screen and (max-width: 1023px){padding-left:20px;}}
   footer a:link{color:#f5f1e1;}
@@ -1823,7 +1836,9 @@ div.cloudzoom-ajax-loader {
   .hsContainer .right {
     padding-right: 20px !important;
   }
-  .index .section{position:relative;background-repeat:no-repeat;background-color:#000;background-size:cover;}
+  .index .section{
+    position:relative;background-repeat:no-repeat;background-color:#000;background-size:cover;
+  }
   .index #second.section{margin-top:-60px !important;}
 }
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -2221,6 +2236,9 @@ img.hidden,.shop-alt img.display_look.collection_hidden,[class^='page-lookbook-'
 }
 
 .section.margin-top{margin-top:100px;}
+.margin-top{
+  margin-top: 25px;
+}
 .container.inner{
   padding:0;
   margin:0 auto;
@@ -2725,10 +2743,9 @@ li.item.hpslide1.fadeIn{
 #splash img{display:none;}
 #splash .text{z-index:9999;color:#f5f1e1;font-size:4rem;display:none;}
 #splash,#introVid{@media only screen and (max-width: 1023px) {display:none;}}
-.index .section{height:100vh;position: relative;background-size: cover;background-color:#000;}
+.index .section{height:100vh;position: relative;background-size: cover;background-color:#000;padding: 0;}
 .simpleHomeSlider,.ourStorySlider{background-color:#000;}
 .text.ipad{display: none;}
-
 
 .ourStorySlider .item{background-size: cover;height: 100vh;}
 
@@ -2750,6 +2767,21 @@ li.item.hpslide1.fadeIn{
 .story-slide-4{background-image:url({{ 'd_About_furniture_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_furniture_new_smaller.jpg' | asset_url | split:'?' | first }});}}
 .story-slide-5{background-image:url({{ 'd_About_NYC-Store_new_smaller.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'm_About_NYC-Store_new_smaller.jpg' | asset_url | split:'?' | first }});}}
 
+.award-slide-1{background-image:url({{ 'award-slide-1b.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'award-slide-1-m.jpg' | asset_url | split:'?' | first }});}}
+.award-slide-2{background-image:url({{ '2_AA_Hero_Slider_Zainab_Retail_Site.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'award-slide-2-m.jpg' | asset_url | split:'?' | first }});}}
+.award-slide-3{background-image:url({{ '3_AA_Hero_Slider_Swarovski_Retail_Site.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'award-slide-3-m.jpg' | asset_url | split:'?' | first }});}}
+.award-slide-4{background-image:url({{ '4_AA_Hero_Slider_Donna_Retail_Site.jpg' | asset_url | split:'?' | first }});@media only screen and (max-width: 1023px) {background-image:url({{ 'award-slide-4-m.jpg' | asset_url | split:'?' | first }});}}
+
+.page-apple-awards,.page-apple-awards main{
+  background-color:#000; 
+}
+.page-apple-awards .first-bg{
+  background:url({{ 'AA_our_community_bg_retail_site.jpg' | asset_url | split:'?' | first }});
+}
+
+.page-apple-awards .last-bg{
+  background:url({{ 'AA_donate_bg_retail_site.jpg' | asset_url | split:'?' | first }});
+}
 
 .hpslide1{background-image:url({{ 'UZR_d_HP_4_fan_new_new_2.jpg' | asset_url | split:'?' | first }});}
 .hpslide2{background-color: #000; background-image:url({{ 'UZR_d_HP_2_jumpsuit.jpg' | asset_url | split:'?' | first }});}
@@ -2804,7 +2836,7 @@ li.item.hpslide1.fadeIn{
   z-index: 9999;
 }
 
-.page-our-story-black main .container,.page-haiti-fans main .container{
+.page-our-story-black main .container,.page-haiti-fans main .container,.page-apple-awards .container{
   padding: 50px;
   margin: 0;
   background: #000;
@@ -2812,6 +2844,11 @@ li.item.hpslide1.fadeIn{
   @media only screen and (max-width: 1023px) {
     padding: 50px 10px;
   }
+}
+
+
+.page-apple-awards .container{
+background: rgba(0, 0, 0, 0.8);
 }
 
 .page-haiti-fans main .container.fan-bg:after{
@@ -3860,11 +3897,21 @@ header .logo{
   display:none;
   @media only screen and (max-width: 1023px){display:block;}
 }
-.index .fp-auto-height.fp-section,
-.index .fp-section:first-child{
+.index .fp-section.desktop-visible{
+  display: block;
+}
+.index .fp-auto-height.fp-section{
   display: block;
 }
 
+.index .video-cover{
+  position: absolute;
+  height: 85%;
+  width: 100%;
+  top: 0;
+  left: 0;
+
+}
 
 .top-z{z-index: 999;}
 
@@ -3975,7 +4022,10 @@ input[disabled]{pointer-events: none;}
   top: 0;
   position: absolute;
 }
+
+.bold{font-family: 'HelveticaNeueLTStd-Bd','Helvetica Neue Bold', helvetica, Arial, sans-serif;}
 .supporters .text.bold{color:#fff;padding:15px;line-height:32px;text-align:center;font-size: 16px;font-family: 'HelveticaNeueLTStd-BdEx', 'Helvetica Neue Bold Extended', Helvetica, Arial, sans-serif;}
+
 .supporters .toggle span{display: block;}
 .toggle{opacity: 0;}
 .toggle-bg {opacity:0;display:block;background:#000;height: 100%;width: 100%;position: absolute;top: 0;left: 0;transition: opacity .25s;
@@ -4182,6 +4232,7 @@ margin: -4em auto auto -6em;
   width: auto;
   min-width: 100%;
   font-family: 'HelveticaNeueLTStd-Md','Helvetica Neue Medium', Helvetica, Arial, sans-serif;
+  @media only screen and (max-width: 1023px){padding: 0;}
 }
 
 .hover-text:hover .text{
@@ -4189,6 +4240,11 @@ margin: -4em auto auto -6em;
 }
 .hover-text:hover{
   opacity: 1;
+}
+.hover-text:hover img{
+  @media (max-width: 1024px) {
+      opacity:0.5 !important;
+  }
 }
 
 .summer-looks{
@@ -4211,4 +4267,12 @@ margin: -4em auto auto -6em;
 
 .fan-bg .black-background{
   z-index: 999;
+}
+
+.mobile-flex{
+  @media (max-width: 1024px) {
+      display: flex;
+      flex-direction: column-reverse;
+      margin: 25px 0;
+  }
 }

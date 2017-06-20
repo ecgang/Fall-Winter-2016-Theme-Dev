@@ -32,9 +32,8 @@
 	<script type="text/javascript" src="{{ 'app.js' | asset_url }}"></script>
 	{% if template contains 'index' or template contains "campaign" or template contains 'philanthropy' or template contains 'our-story' %}
 	<script type="text/javascript">		
-		$(window).ready(function() {
+		$(document).ready(function() {
 			var fullPageCreated = false;
-			createFullpage();
 			function createFullpage() {
 				if(fullPageCreated === false) {
 					fullPageCreated = true; 
@@ -49,9 +48,9 @@
 				$.fn.fullpage.destroy('all');
 				createFullpage();
 			}
-			$(window).resize(function() {
+			
 	          //mobile width change 400
-				if ($(window).width() > 400) {
+				if ($(window).width() < 1023) {
 	          		createFullpage();
 	          	} else {
 	          		if(fullPageCreated == true) {
@@ -59,7 +58,7 @@
 	          			$.fn.fullpage.destroy('all');
 	          		}
 	          	}
-			});
+			
 		});
 	</script>
 

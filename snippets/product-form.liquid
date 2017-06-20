@@ -70,7 +70,7 @@
       {% endif %}
 <span class="empty disabled-container">
       {% capture add_to_cart_label %}{{ 'products.product.add_to_cart' | t }}{% endcapture %}
-     {% if product.tags contains 'pre-order' %}<p>Expected to ship prior to June 1st</p><br/>{% endif %}
+     {% if product.tags contains 'pre-order' %}<p>Expected to ship prior to June 26th</p><br/>{% endif %}
       {% if product.tags contains "coming-soon" %}
        <button type="" name="" class="cta-button" data-label="AVAILABLE MID-DECEMBER" disabled><span class="coming-soon" >AVAILABLE MID-DECEMBER<br><span class="subtext">Call: 212.206.3999</span></span></button>
        {% elsif product.tags contains "call-to-purchase" %}
