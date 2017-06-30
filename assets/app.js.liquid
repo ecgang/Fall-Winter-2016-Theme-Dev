@@ -3075,7 +3075,11 @@ $('.lightbox').fancybox();
 $(document).ready(function(){
 			function scrollToAnchor(aid){
 				var aTag = $("a[name='"+ aid +"']");
-				$('html,body').animate({scrollTop: aTag.offset().top -50},'slow');
+				if(document.documentElement.clientWidth < 1023) {
+					$('html,body').animate({scrollTop: aTag.offset().top -50},'slow');
+				}else{
+					$('html,body').animate({scrollTop: aTag.offset().top -0},'slow');
+				}
 			}
 			$("#link").click(function() {
 				scrollToAnchor('jump-to');
